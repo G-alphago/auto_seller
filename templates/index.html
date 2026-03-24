@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qoo10 상품 등록 도구</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+KR:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        #0d0d0d;
+      --surface:   #161616;
+      --border:    #2a2a2a;
+      --accent:    #ff6b00;
+      --accent2:   #ffb347;
+      --text:      #e8e8e8;
+      --muted:     #666;
+      --success:   #00c896;
+      --error:     #ff4444;
+      --mono:      'IBM Plex Mono', monospace;
+      --sans:      'IBM Plex Sans KR', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Header ── */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .logo-mark {
+      width: 32px; height: 32px;
+      background: var(--accent);
+      clip-path: polygon(0 0, 100% 0, 100% 70%, 70% 100%, 0 100%);
+    }
+    header h1 {
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    header span {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      margin-left: auto;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Main Layout ── */
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 48px 40px;
+    }
+
+    @media (max-width: 768px) {
+      main { grid-template-columns: 1fr; padding: 24px 20px; }
+      header { padding: 16px 20px; }
+    }
+
+    /* ── Left Panel ── */
+    .panel-left {
+      padding-right: 48px;
+      border-right: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .input-group {
+      margin-bottom: 32px;
+    }
+    .input-group label {
+      display: block;
+      font-size: 11px;
+      font-family: var(--mono);
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .input-wrap {
+      position: relative;
+    }
+    .input-wrap input {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 13px;
+      padding: 14px 16px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .input-wrap input:focus {
+      border-color: var(--accent);
+    }
+    .input-wrap input::placeholder {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* ── Button ── */
+    .btn-run {
+      width: 100%;
+      background: var(--accent);
+      color: #000;
+      border: none;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 16px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-run:hover { background: var(--accent2); }
+    .btn-run:active { transform: scale(0.99); }
+    .btn-run:disabled {
+      background: var(--border);
+      color: var(--muted);
+      cursor: not-allowed;
+    }
+
+    /* ── Progress ── */
+    .progress-wrap {
+      margin-top: 24px;
+      display: none;
+    }
+    .progress-wrap.visible { display: block; }
+    .progress-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      transition: color 0.3s;
+    }
+    .step.active { color: var(--text); }
+    .step.done   { color: var(--success); }
+    .step.error  { color: var(--error); }
+    .step-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--border);
+      flex-shrink: 0;
+      transition: background 0.3s;
+    }
+    .step.active .step-dot { background: var(--accent); animation: pulse 1s infinite; }
+    .step.done   .step-dot { background: var(--success); }
+    .step.error  .step-dot { background: var(--error); }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+
+    /* ── Right Panel ── */
+    .panel-right {
+      padding-left: 48px;
+    }
+
+    /* ── Result Card ── */
+    .result-area {
+      display: none;
+    }
+    .result-area.visible { display: block; }
+
+    .result-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .result-card h3 {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 8px 16px;
+      margin-bottom: 10px;
+      align-items: start;
+    }
+    .field-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      padding-top: 2px;
+    }
+    .field-value {
+      font-size: 13px;
+      color: var(--text);
+      word-break: break-all;
+      line-height: 1.5;
+    }
+    .field-value.highlight {
+      color: var(--accent2);
+      font-family: var(--mono);
+      font-weight: 600;
+    }
+    .field-value.tag {
+      display: inline-block;
+      background: rgba(255,107,0,0.1);
+      border: 1px solid rgba(255,107,0,0.3);
+      padding: 2px 8px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+    }
+
+    /* ── Thumbnail ── */
+    .thumb-wrap {
+      width: 64px; height: 64px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .thumb-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .title-img-row {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+    .title-block { flex: 1; }
+
+    /* ── Download Button ── */
+    .btn-download {
+      display: block;
+      width: 100%;
+      background: transparent;
+      border: 1px solid var(--success);
+      color: var(--success);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 14px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-download:hover {
+      background: var(--success);
+      color: #000;
+    }
+
+    /* ── Error Box ── */
+    .error-box {
+      display: none;
+      background: rgba(255,68,68,0.08);
+      border: 1px solid var(--error);
+      padding: 16px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--error);
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+    .error-box.visible { display: block; }
+
+    /* ── Empty State ── */
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 300px;
+      color: var(--muted);
+      text-align: center;
+    }
+    .empty-state .big-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      opacity: 0.3;
+    }
+    .empty-state p {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      line-height: 1.8;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    footer span {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+    .status-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--success);
+      display: inline-block;
+      margin-right: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-mark"></div>
+  <h1>Qoo10 Product Tool</h1>
+  <span>v1.0 — SCRAPER + EXPORTER</span>
+</header>
+
+<main>
+  <!-- ── Left: Input ── -->
+  <div class="panel-left">
+    <div class="section-label">Input</div>
+
+    <div class="input-group">
+      <label>Product URL</label>
+      <div class="input-wrap">
+        <input
+          type="url"
+          id="urlInput"
+          placeholder="https://www.coupang.com/vp/products/..."
+        />
+      </div>
+    </div>
+
+    <button class="btn-run" id="runBtn" onclick="runProcess()">
+      ▶ 실행 — 크롤링 + 엑셀 생성
+    </button>
+
+    <!-- Progress Steps -->
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-steps">
+        <div class="step" id="step1">
+          <div class="step-dot"></div>
+          <span>01 — URL 크롤링 중...</span>
+        </div>
+        <div class="step" id="step2">
+          <div class="step-dot"></div>
+          <span>02 — 상품 데이터 파싱 중...</span>
+        </div>
+        <div class="step" id="step3">
+          <div class="step-dot"></div>
+          <span>03 — Qoo10 포맷 변환 중...</span>
+        </div>
+        <div class="step" id="step4">
+          <div class="step-dot"></div>
+          <span>04 — 엑셀 파일 생성 중...</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error Box -->
+    <div class="error-box" id="errorBox"></div>
+  </div>
+
+  <!-- ── Right: Result ── -->
+  <div class="panel-right">
+    <div class="section-label">Result</div>
+
+    <!-- Empty State -->
+    <div class="empty-state" id="emptyState">
+      <div class="big-icon">⬛</div>
+      <p>URL을 입력하고<br>실행 버튼을 누르면<br>결과가 여기에 표시됩니다.</p>
+    </div>
+
+    <!-- Result Area -->
+    <div class="result-area" id="resultArea">
+      <div class="result-card">
+        <h3>Extracted Data</h3>
+
+        <div class="title-img-row">
+          <div class="thumb-wrap" id="thumbWrap" style="display:none">
+            <img id="thumbImg" src="" alt="상품 이미지" />
+          </div>
+          <div class="title-block">
+            <div class="field-row">
+              <span class="field-label">상품명</span>
+              <span class="field-value" id="resTitle">—</span>
+            </div>
+            <div class="field-row">
+              <span class="field-label">판매가격</span>
+              <span class="field-value highlight" id="resPrice">—</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <span class="field-label">이미지 URL</span>
+          <span class="field-value" id="resImage" style="font-size:11px;color:var(--muted)">—</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">옵션 정보</span>
+          <span class="field-value tag" id="resOptions">없음</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">상품설명</span>
+          <span class="field-value" id="resDescLen" style="font-size:11px;color:var(--muted)">—</span>
+        </div>
+      </div>
+
+      <a class="btn-download" id="downloadBtn" href="#" download>
+        ↓ 엑셀 파일 다운로드
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span><span class="status-dot"></span>서버 실행 중</span>
+  <span>requests + BeautifulSoup + openpyxl</span>
+  <span id="lastTime"></span>
+</footer>
+
+<script>
+  let currentFilename = null;
+
+  function setStep(stepId, state) {
+    const el = document.getElementById(stepId);
+    if (!el) return;
+    el.className = 'step ' + state;
+  }
+
+  function resetSteps() {
+    ['step1','step2','step3','step4'].forEach(id => setStep(id, ''));
+  }
+
+  async function runProcess() {
+    const url = document.getElementById('urlInput').value.trim();
+    if (!url) {
+      showError('URL을 입력해 주세요.');
+      return;
+    }
+
+    // Reset UI
+    hideError();
+    hideResult();
+    document.getElementById('progressWrap').classList.add('visible');
+    document.getElementById('runBtn').disabled = true;
+    resetSteps();
+
+    // Animate steps
+    setStep('step1', 'active');
+    await delay(400);
+    setStep('step1', 'active');
+    setStep('step2', 'active');
+    await delay(400);
+    setStep('step3', 'active');
+
+    try {
+      const res = await fetch('/process', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url })
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || data.error) {
+        ['step1','step2','step3','step4'].forEach(id => setStep(id, 'error'));
+        showError(data.error || '알 수 없는 오류가 발생했습니다.');
+        return;
+      }
+
+      setStep('step1', 'done');
+      setStep('step2', 'done');
+      setStep('step3', 'done');
+      await delay(300);
+      setStep('step4', 'active');
+      await delay(400);
+      setStep('step4', 'done');
+
+      // Show result
+      showResult(data);
+      document.getElementById('lastTime').textContent =
+        '마지막 실행: ' + new Date().toLocaleTimeString('ko-KR');
+
+    } catch (e) {
+      ['step1','step2','step3','step4'].forEach(id => setStep(id, 'error'));
+      showError('서버 연결 오류: ' + e.message);
+    } finally {
+      document.getElementById('runBtn').disabled = false;
+    }
+  }
+
+  function showResult(data) {
+    const p = data.preview || {};
+    document.getElementById('emptyState').style.display = 'none';
+    document.getElementById('resultArea').classList.add('visible');
+
+    document.getElementById('resTitle').textContent  = p.title   || '—';
+    document.getElementById('resPrice').textContent  = p.price   ? p.price + ' 원' : '—';
+    document.getElementById('resOptions').textContent = p.options || '없음';
+    document.getElementById('resImage').textContent  = p.main_image
+      ? p.main_image.substring(0, 60) + '...'
+      : '—';
+    document.getElementById('resDescLen').textContent =
+      p.desc_len ? `${p.desc_len.toLocaleString()} 자` : '—';
+
+    // Thumbnail
+    if (p.main_image) {
+      document.getElementById('thumbImg').src = p.main_image;
+      document.getElementById('thumbWrap').style.display = 'block';
+    }
+
+    // Download link
+    currentFilename = data.filename;
+    const dlBtn = document.getElementById('downloadBtn');
+    dlBtn.href = '/download/' + data.filename;
+    dlBtn.textContent = '↓ ' + data.filename + ' 다운로드';
+  }
+
+  function hideResult() {
+    document.getElementById('resultArea').classList.remove('visible');
+    document.getElementById('emptyState').style.display = 'flex';
+    document.getElementById('thumbWrap').style.display = 'none';
+  }
+
+  function showError(msg) {
+    const box = document.getElementById('errorBox');
+    box.textContent = '⚠ ' + msg;
+    box.classList.add('visible');
+  }
+
+  function hideError() {
+    document.getElementById('errorBox').classList.remove('visible');
+  }
+
+  function delay(ms) {
+    return new Promise(r => setTimeout(r, ms));
+  }
+
+  // Enter key support
+  document.getElementById('urlInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') runProcess();
+  });
+</script>
+</body>
+</html>

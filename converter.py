@@ -206,8 +206,14 @@ def convert_to_qoo10_row(product: dict) -> dict:
     print("[번역] 옵션 번역 중...")
     option_str = format_options_qoo10(product.get("options", []))
 
-    # 6. 카테고리 매칭 (원본 제목 기준이 더 정확할 수 있음)
+    # 6. 카테고리 매칭
     category_id = match_category(raw_title)
+
+    # 7. 무게 정보 처리 (+500g, kg 환산, 0.0 포맷)
+    weight_g = product.get("weight", 0.0)
+    final_weight_kg = (weight_g + 500) / 1000.0
+    weight_str = f"{final_weight_kg:.1f}"
+
 
     return {
         "item_name":            title_ja,  # 번역된 상품명 적용
@@ -247,7 +253,7 @@ def convert_to_qoo10_row(product: dict) -> dict:
         "origin_country_id":    "KR",
         "origin_others":        "",
         "medication_type":      "",
-        "item_weight":          "",
+        "item_weight":          weight_str, # 무게 정보 (+500g 반영 kg 단위)
         "item_material":        "",
         "model_name":           "",
         "external_product_type": "",

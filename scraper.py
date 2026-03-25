@@ -3,8 +3,29 @@ from bs4 import BeautifulSoup
 import json
 import re
 import os
+import time
+from urllib.parse import urlparse
+from playwright.sync_api import sync_playwright
 from dotenv import load_dotenv
 load_dotenv()
+
+def extract_weight(text: str) -> float:
+    """텍스트에서 무게 정보(g) 추출. 없으면 0.0 반환"""
+    if not text: return 0.0
+    # 패턴: 숫자 + g 또는 kg (단, ml 등은 제외)
+    # 예: 500g, 1.2kg, 1,000g
+    # 1. kg 탐지
+    kg_match = re.search(r'([\d\.,]+)\s*k?g', text, re.I)
+    if kg_match:
+        val_str = kg_match.group(1).replace(',', '')
+        try:
+            val = float(val_str)
+            if 'kg' in kg_match.group(0).lower():
+                return val * 1000
+            return val
+        except:
+            pass
+    return 0.0
 
 
 def extract_product_data(url: str) -> dict:
@@ -573,6 +594,13 @@ def extract_with_playwright(url: str) -> dict:
         if candidates:
             candidates.sort(reverse=True)
             detail_html = candidates[0][1]
+
+    # 상세 설명에서 무게 정보 추출 시도
+    if detail_html:
+        weight_val = extract_weight(BeautifulSoup(detail_html, 'html.parser').get_text())
+        result["weight"] = weight_val
+    else:
+        result["weight"] = 0.0
 
     result["detail_html"] = detail_html
     return result

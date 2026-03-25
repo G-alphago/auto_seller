@@ -57,7 +57,7 @@ def match_category(product_title: str) -> str:
 
     # 핵심 카테고리 힌트
     is_smartphone = any(kw in title_text for kw in ["GALAXY", "IPHONE", "갤럭시", "아이폰", "스마트폰", "폰케이스"])
-    is_beauty     = any(kw in title_text for kw in ["화장품", "코스메틱", "스킨케어", "로션", "에센스", "뷰티"])
+    is_beauty     = any(kw in title_text for kw in ["화장품", "코스메틱", "스킨케어", "로션", "에센스", "뷰티", "BEAUTY", "세럼", "앰플"])
     is_fashion    = any(kw in title_text for kw in ["의류", "원피스", "팬츠", "셔츠", "자켓", "코트", "정장"])
 
     best_match = None
@@ -68,6 +68,11 @@ def match_category(product_title: str) -> str:
         s_name = cat["small_name"]
         m_name = cat["middle_name"]
         l_name = cat["large_name"]
+        
+        # [추가] 건강식품 카테고리 제외 필터링
+        if "건강식품" in l_name or "건강식품" in m_name:
+            continue
+
         all_names = f"{l_name} {m_name} {s_name}".upper()
 
         # 1. 성별/연령대 필터링
@@ -87,7 +92,7 @@ def match_category(product_title: str) -> str:
 
         # 2. 핵심 카테고리 힌트 가중치
         if is_smartphone and "스마트폰케이스" in all_names: score += 50
-        if is_beauty     and any(kw in all_names for kw in ["스킨케어", "화장품", "뷰티"]): score += 50
+        if is_beauty     and any(kw in all_names for kw in ["스킨케어", "화장품", "뷰티", "메이크업"]): score += 70
         if is_fashion    and any(kw in l_name for kw in ["여성복", "남성 의류"]): score += 10
         
         # 취미/코스튬플레이 카테고리 기피 (일반 의류일 경우)

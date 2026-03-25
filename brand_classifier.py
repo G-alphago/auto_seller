@@ -47,6 +47,19 @@ def load_brands():
             _BRAND_NAMES_SORTED = sorted(_BRAND_MAP.keys(), key=len, reverse=True)
             
         print(f"[BrandClassifier] {len(_BRAND_MAP)}개의 브랜드 키워드 로드 완료.")
+        
+        # [추가] 커스텀 브랜드 매칭 (예외 처리 및 일본어 오표기 대응)
+        # 이 부분은 _BRAND_MAP의 기존 구조(key: brand_name_upper, value: brand_code)와 일치하도록 수정되었습니다.
+        # '무신사 스탠다드 뷰티'의 브랜드 코드를 'MSB'로 가정하고 추가합니다.
+        # 실제 코드에 맞게 'MSB'를 적절한 브랜드 코드로 변경해야 합니다.
+        custom_brand_code = _BRAND_MAP.get("MUSINSA STANDARD BEAUTY", "MSB") # 기존에 있으면 그 코드를 사용, 없으면 'MSB' 사용
+        _BRAND_MAP["MUSINSA STANDARD BEAUTY"] = custom_brand_code
+        _BRAND_MAP["무신사 스탠다드 뷰티".upper()] = custom_brand_code
+        _BRAND_MAP["ム신사스탠다드뷰티".upper()] = custom_brand_code
+        _BRAND_MAP["無神社スタンダードビューティー".upper()] = custom_brand_code
+        # 커스텀 브랜드 추가 후 정렬된 이름 목록을 다시 업데이트
+        _BRAND_NAMES_SORTED = sorted(_BRAND_MAP.keys(), key=len, reverse=True)
+
     except Exception as e:
         print(f"[BrandClassifier] 로드 오류: {e}")
     
@@ -97,8 +110,11 @@ def extract_brand_info(title: str):
         cleaned_title = pattern.sub("", cleaned_title).strip()
 
     # 제거 후 남은 공백이나 특수문자 정제
-    cleaned_title = re.sub(r'^[ \t\n\r\f\v\-_|,/]+', '', cleaned_title) 
-    cleaned_title = re.sub(r'\s{2,}', ' ', cleaned_title).strip()
+    cleaned_title = re.sub(r'^[ \t\n\r\f\v\-_|,/]+', '', cleaned_title) # 불필요한 공백 및 특수문자 정리
+    cleaned_title = re.sub(r'\s+', ' ', cleaned_title) # 2개 이상의 공백을 1개로
+    # 빈 괄호 제거 (예: 브랜드명 제거 후 남은 괄호)
+    cleaned_title = re.sub(r'\(\s*\)|\[\s*\]|\{\s*\}|（\s*）|【\s*】', '', cleaned_title)
+    cleaned_title = cleaned_title.strip()
 
     return best_brand_code, cleaned_title
 

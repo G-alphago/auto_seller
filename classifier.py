@@ -69,8 +69,9 @@ def match_category(product_title: str) -> str:
         m_name = cat["middle_name"]
         l_name = cat["large_name"]
         
-        # [추가] 건강식품 카테고리 제외 필터링
-        if "건강식품" in l_name or "건강식품" in m_name:
+        # [수정] 건강식품/서플리먼트 카테고리 절대 선택 금지
+        exclude_kws = ["서플리먼트", "건강식품", "다이어트", "영양제", "건강가전", "건강용품"]
+        if any(kw in l_name for kw in exclude_kws) or any(kw in m_name for kw in exclude_kws) or any(kw in s_name for kw in exclude_kws):
             continue
 
         all_names = f"{l_name} {m_name} {s_name}".upper()

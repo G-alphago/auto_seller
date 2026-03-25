@@ -21,7 +21,9 @@ def load_categories():
             reader = csv.DictReader(f)
             for row in reader:
                 _CATEGORIES.append({
+                    "large_code": row.get("대카테고리 코드", ""),
                     "large_name": row.get("대카테고리 명", ""),
+                    "middle_code": row.get("중카테고리 코드", ""),
                     "middle_name": row.get("중카테고리 명", ""),
                     "small_code": row.get("소카테고리 코드", ""),
                     "small_name": row.get("소카테고리 명", "")
@@ -107,11 +109,14 @@ def match_category(product_title: str) -> str:
 
         if score > max_score:
             max_score = score
-            best_match = cat["small_code"]
+            # 소-중-대 순으로 유효한 코드 선택
+            best_match = cat.get("small_code") or cat.get("middle_code") or cat.get("large_code") or ""
 
-    # 최소 임계값
-    if max_score < 10:
-        return ""
+
+    # 최소 임계값 미만인 경우 기본 카테고리 (여성 패션 등 일반적인 곳) 반환
+    if max_score < 10 or not best_match:
+        # Qoo10_CategoryInfo.csv의 첫 번째 유효한 코드라도 반환 (절대 공백 금지)
+        return categories[0].get("small_code") or categories[0].get("middle_code") or "100000001"
 
     return best_match
 

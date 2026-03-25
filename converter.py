@@ -219,14 +219,14 @@ def convert_to_qoo10_row(product: dict) -> dict:
         "quantity":             100,
         "option_info":          option_str, # 번역된 옵션 적용
 
-        "image_main_url":       processed_image_path, # 변환된 이미지 경로 또는 URL
+        "image_main_url":       main_image_url, # HTTP URL 형태 유지
         "image_other_url":      "",
 
         "item_description":     translate_html_content(product.get("detail_html", "")),
         "start_date":           "",
         "end_date":             "",
         "available_shipping_date": 3,
-        "Shipping_number":      "",
+        "Shipping_number":      "665405", # 고정 배송비 코드
         "item_condition_type":  "1",
         "origin_type":          "2",
         "search_keyword":       "",

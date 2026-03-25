@@ -375,13 +375,39 @@
     <div class="section-label">Input</div>
 
     <div class="input-group">
-      <label>Product URL</label>
-      <div class="input-wrap">
-        <input
-          type="url"
-          id="urlInput"
-          placeholder="https://www.coupang.com/vp/products/..."
-        />
+      <label>Product URLs (Up to 10)</label>
+      <div id="urlContainer">
+        <div class="input-wrap" style="margin-bottom: 8px;">
+          <input type="url" class="url-input" placeholder="https://..." />
+        </div>
+        <div class="input-wrap" style="margin-bottom: 8px;">
+          <input type="url" class="url-input" placeholder="https://..." />
+        </div>
+        <div class="input-wrap" style="margin-bottom: 8px;">
+          <input type="url" class="url-input" placeholder="https://..." />
+        </div>
+        <div class="input-wrap" style="margin-bottom: 8px;">
+          <input type="url" class="url-input" placeholder="https://..." />
+        </div>
+        <div class="input-wrap" style="margin-bottom: 8px;">
+          <input type="url" class="url-input" placeholder="https://..." />
+        </div>
+        <!-- 나머지 5개는 동적으로 가독성 위해 생략 또는 추가 -->
+        <div class="input-wrap" style="margin-bottom: 8px;">
+          <input type="url" class="url-input" placeholder="https://..." />
+        </div>
+        <div class="input-wrap" style="margin-bottom: 8px;">
+          <input type="url" class="url-input" placeholder="https://..." />
+        </div>
+        <div class="input-wrap" style="margin-bottom: 8px;">
+          <input type="url" class="url-input" placeholder="https://..." />
+        </div>
+        <div class="input-wrap" style="margin-bottom: 8px;">
+          <input type="url" class="url-input" placeholder="https://..." />
+        </div>
+        <div class="input-wrap" style="margin-bottom: 8px;">
+          <input type="url" class="url-input" placeholder="https://..." />
+        </div>
       </div>
     </div>
 
@@ -487,9 +513,11 @@
   }
 
   async function runProcess() {
-    const url = document.getElementById('urlInput').value.trim();
-    if (!url) {
-      showError('URL을 입력해 주세요.');
+    const inputs = document.querySelectorAll('.url-input');
+    const urls = Array.from(inputs).map(i => i.value.trim()).filter(v => v !== '');
+    
+    if (urls.length === 0) {
+      showError('최소 하나 이상의 URL을 입력해 주세요.');
       return;
     }
 
@@ -502,17 +530,12 @@
 
     // Animate steps
     setStep('step1', 'active');
-    await delay(400);
-    setStep('step1', 'active');
-    setStep('step2', 'active');
-    await delay(400);
-    setStep('step3', 'active');
-
+    
     try {
       const res = await fetch('/process', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url })
+        body: JSON.stringify({ urls })
       });
 
       const data = await res.json();
@@ -545,30 +568,40 @@
   }
 
   function showResult(data) {
-    const p = data.preview || {};
     document.getElementById('emptyState').style.display = 'none';
     document.getElementById('resultArea').classList.add('visible');
 
-    document.getElementById('resTitle').textContent  = p.title   || '—';
-    document.getElementById('resPrice').textContent  = p.price   ? p.price + ' 원' : '—';
-    document.getElementById('resOptions').textContent = p.options || '없음';
-    document.getElementById('resImage').textContent  = p.main_image
-      ? p.main_image.substring(0, 60) + '...'
-      : '—';
-    document.getElementById('resDescLen').textContent =
-      p.desc_len ? `${p.desc_len.toLocaleString()} 자` : '—';
+    // 다중 처리 결과 요약 표시
+    const count = data.count || 0;
+    document.getElementById('resTitle').textContent  = `${count}개의 상품 처리 완료`;
+    document.getElementById('resPrice').textContent  = '-';
+    document.getElementById('resOptions').textContent = '-';
+    document.getElementById('resImage').textContent  = '-';
+    document.getElementById('resDescLen').textContent = '-';
 
-    // Thumbnail
-    if (p.main_image) {
-      document.getElementById('thumbImg').src = p.main_image;
+    // Thumbnail (첫 번째 이미지 활용)
+    if (data.preview_image) {
+      document.getElementById('thumbImg').src = data.preview_image;
       document.getElementById('thumbWrap').style.display = 'block';
     }
 
-    // Download link
-    currentFilename = data.filename;
+    // Download links (2개 생성)
+    const resultArea = document.getElementById('resultArea');
+    const existingLinks = resultArea.querySelectorAll('.btn-download-extra');
+    existingLinks.forEach(el => el.remove());
+
     const dlBtn = document.getElementById('downloadBtn');
-    dlBtn.href = '/download/' + data.filename;
-    dlBtn.textContent = '↓ ' + data.filename + ' 다운로드';
+    dlBtn.href = '/download/' + data.upload_file;
+    dlBtn.textContent = '↓ 업로드용 엑셀 다운로드';
+    
+    if (data.summary_file) {
+      const summaryBtn = document.createElement('a');
+      summaryBtn.className = 'btn-download btn-download-extra';
+      summaryBtn.style.marginTop = '10px';
+      summaryBtn.href = '/download/' + data.summary_file;
+      summaryBtn.textContent = '↓ 요약용 엑셀 다운로드';
+      resultArea.appendChild(summaryBtn);
+    }
   }
 
   function hideResult() {
@@ -591,9 +624,9 @@
     return new Promise(r => setTimeout(r, ms));
   }
 
-  // Enter key support
-  document.getElementById('urlInput').addEventListener('keydown', e => {
-    if (e.key === 'Enter') runProcess();
+  // Enter key support for all inputs
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && e.target.classList.contains('url-input')) runProcess();
   });
 </script>
 </body>

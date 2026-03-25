@@ -6,6 +6,8 @@ from io import BytesIO
 from deep_translator import GoogleTranslator
 from PIL import Image
 from bs4 import BeautifulSoup
+from classifier import match_category
+from brand_classifier import extract_brand_info
 
 
 def get_usd_jpy_rate() -> float:
@@ -187,18 +189,25 @@ def convert_to_qoo10_row(product: dict) -> dict:
 
     price_jpy = calculate_price_jpy(price_krw) if price_krw > 0 else ""
 
-    # 2. 상품명 정제 및 일본어 번역
-    title_ko = clean_item_name(product.get("title", ""))
+    # 2. 브랜드 추출 및 상품명 정제
+    raw_title = product.get("title", "")
+    brand_code, cleaned_title_ko = extract_brand_info(raw_title)
+    
+    # 3. 사이트별 특수문자 및 불필요 키워드 추가 정제
+    title_ko = clean_item_name(cleaned_title_ko)
     print(f"[번역] 상품명 번역 중... ({title_ko[:20]}...)")
     title_ja = translate_ko_to_ja(title_ko)
 
-    # 3. 메인 이미지 큐텐 규격화 (정사각형 패딩)
+    # 4. 메인 이미지 큐텐 규격화 (정사각형 패딩)
     main_image_url = product.get("main_image", "")
     processed_image_path = make_image_square(main_image_url)
 
-    # 4. 옵션 변환 및 번역
+    # 5. 옵션 변환 및 번역
     print("[번역] 옵션 번역 중...")
     option_str = format_options_qoo10(product.get("options", []))
+
+    # 6. 카테고리 매칭 (원본 제목 기준이 더 정확할 수 있음)
+    category_id = match_category(raw_title)
 
     return {
         "item_name":            title_ja,  # 번역된 상품명 적용
@@ -223,8 +232,8 @@ def convert_to_qoo10_row(product: dict) -> dict:
         "search_keyword":       "",
 
         "seller_unique_item_id": "",
-        "category_number":      "",
-        "brand_number":         "",
+        "category_number":      category_id,
+        "brand_number":         brand_code,
         "additional_option_info": "",
         "additional_option_text": "",
         "video_url":            "",

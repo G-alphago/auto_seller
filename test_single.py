@@ -2,7 +2,7 @@ from classifier import match_category
 from scraper import extract_product
 from converter import convert_to_qoo10_row
 
-url = "https://www.musinsa.com/products/5430925"
+url = "https://www.11st.co.kr/products/6451634676"  # Valid 11st URL (Yonex Power Cushion Lumio 4)
 print(f"Testing URL: {url}")
 product_data = extract_product(url)
 print(f"Extracted Title: {product_data.get('title')}")

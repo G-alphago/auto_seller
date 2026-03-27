@@ -58,9 +58,8 @@ if __name__ == "__main__":
     # 테스트용 URL 리스트 (무신사, 11번가, 네이버 스마트스토어 등)
     # 실제 테스트 시 유효한 URL로 교체 가능
     test_urls = [
-        "https://www.musinsa.com/products/4397792", # 무신사 샘플
-        "https://www.11st.co.kr/products/6890835586", # 11번가 샘플
-        "https://smartstore.naver.com/vibe_coding/products/1000000000" # 스마트스토어 가상의 URL (네이버 API 테스트용)
+        "https://www.musinsa.com/products/4397792", # 무신사 샘플 1
+        "https://www.musinsa.com/products/4523674", # 무신사 샘플 2
     ]
     
     # 실제 동작 확인을 위해 유효한 URL로 테스트하는 것이 좋습니다.

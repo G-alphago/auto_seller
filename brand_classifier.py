@@ -49,10 +49,8 @@ def load_brands():
         print(f"[BrandClassifier] {len(_BRAND_MAP)}개의 브랜드 키워드 로드 완료.")
         
         # [추가] 커스텀 브랜드 매칭 (예외 처리 및 일본어 오표기 대응)
-        # 이 부분은 _BRAND_MAP의 기존 구조(key: brand_name_upper, value: brand_code)와 일치하도록 수정되었습니다.
-        # '무신사 스탠다드 뷰티'의 브랜드 코드를 'MSB'로 가정하고 추가합니다.
-        # 실제 코드에 맞게 'MSB'를 적절한 브랜드 코드로 변경해야 합니다.
-        custom_brand_code = _BRAND_MAP.get("MUSINSA STANDARD BEAUTY", "MSB") # 기존에 있으면 그 코드를 사용, 없으면 'MSB' 사용
+        # 무신사 관련 코드가 BrandList.csv에 없으므로, 기존 지침에 따라 공백('') 처리합니다.
+        custom_brand_code = "" 
         _BRAND_MAP["MUSINSA STANDARD BEAUTY"] = custom_brand_code
         _BRAND_MAP["무신사 스탠다드 뷰티".upper()] = custom_brand_code
         _BRAND_MAP["ム신사스탠다드뷰티".upper()] = custom_brand_code

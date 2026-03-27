@@ -60,37 +60,125 @@ def extract_product_data(url: str) -> dict:
     response.encoding = response.apparent_encoding
     soup = BeautifulSoup(response.text, "html.parser")
 
-    def extract_json_by_depth(text, start_char="{"):
-        idx = text.find(start_char)
-        if idx == -1:
-            return None
-        open_c  = "{" if start_char == "{" else "["
-        close_c = "}" if start_char == "{" else "]"
-        depth = 0
-        in_string = False
-        escape = False
-        for i, ch in enumerate(text[idx:], start=idx):
-            if escape:
-                escape = False
-                continue
-            if ch == "\\" and in_string:
-                escape = True
-                continue
-            if ch == '"' and not escape:
-                in_string = not in_string
-                continue
-            if in_string:
-                continue
-            if ch == open_c:
-                depth += 1
-            elif ch == close_c:
-                depth -= 1
-                if depth == 0:
-                    try:
-                        return json.loads(text[idx:i+1])
-                    except Exception:
-                        return None
+def extract_json_by_depth(text, start_char="{"):
+    idx = text.find(start_char)
+    if idx == -1:
         return None
+    open_c  = "{" if start_char == "{" else "["
+    close_c = "}" if start_char == "{" else "]"
+    depth = 0
+    in_string = False
+    escape = False
+    for i, ch in enumerate(text[idx:], start=idx):
+        if escape:
+            escape = False
+            continue
+        if ch == "\\" and in_string:
+            escape = True
+            continue
+        if ch == '"' and not escape:
+            in_string = not in_string
+            continue
+        if in_string:
+            continue
+        if ch == open_c:
+            depth += 1
+        elif ch == close_c:
+            depth -= 1
+            if depth == 0:
+                try:
+                    return json.loads(text[idx:i+1])
+                except Exception:
+                    return None
+    return None
+
+def extract_js_data_from_soup(soup: BeautifulSoup) -> dict:
+    js_data = {}
+    
+    # 1. ID기반 직접 추출 (신속/정확)
+    # __NEXT_DATA__
+    next_el = soup.find("script", id="__NEXT_DATA__")
+    if next_el and next_el.string:
+        try:
+            s_content = next_el.string.strip()
+            try:
+                js_data["__NEXT_DATA__"] = json.loads(s_content)
+            except:
+                import html
+                js_data["__NEXT_DATA__"] = json.loads(html.unescape(s_content))
+        except: pass
+            
+    # pdp-data (무신사 최신)
+    pdp_el = soup.find("script", id="pdp-data")
+    if pdp_el and pdp_el.string:
+        try:
+            # window.__MSS__.product = { ... }; 또는 state = { ... }; 모두 대응
+            m = re.search(r'(?:state|product)\s*=\s*({.*})', pdp_el.string, re.DOTALL)
+            if m:
+                js_data["pdp_data"] = json.loads(m.group(1))
+        except: pass
+
+    # 2. 패턴 기반 추출 (범용)
+    js_keys = ["__NEXT_DATA__", "__INITIAL_STATE__", "window.__DATA__", "window.pageData", "dataLayer", "window.v_goodsDetail", "window.prdConfig"]
+    for script in soup.find_all("script"):
+        text = script.string or ""
+        if not text.strip():
+            continue
+        for key in js_keys:
+            if key not in text:
+                continue
+            # 이미 ID 기반으로 찾은 키면 스킵 (더 정확하므로)
+            if key in js_data:
+                continue
+            key_idx = text.find(key)
+            after_key = text[key_idx + len(key):]
+            bracket_offset = -1
+            for i, ch in enumerate(after_key[:50]):
+                if ch in ("{", "["):
+                    bracket_offset = i
+                    break
+            if bracket_offset == -1:
+                continue
+            snippet = after_key[bracket_offset:]
+            parsed = extract_json_by_depth(snippet, snippet[0])
+            if parsed and isinstance(parsed, (dict, list)):
+                js_data[key] = parsed
+    print(f"[DEBUG] Extracted JS Keys: {list(js_data.keys())}")
+    return js_data
+
+def extract_product_data(url: str) -> dict:
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/120.0.0.0 Safari/537.36"
+        ),
+        "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Connection": "keep-alive",
+        "Upgrade-Insecure-Requests": "1",
+        "Sec-Fetch-Dest": "document",
+        "Sec-Fetch-Mode": "navigate",
+        "Sec-Fetch-Site": "none",
+        "Sec-Fetch-User": "?1",
+        "Cache-Control": "max-age=0",
+    }
+
+    result = {
+        "title": "",
+        "price": "",
+        "main_image": "",
+        "detail_html": "",
+        "options": []
+    }
+
+    response = requests.get(url, headers=headers, timeout=15)
+    response.raise_for_status()
+    response.encoding = response.apparent_encoding
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    js_data = extract_js_data_from_soup(soup)
 
     ld_data = {}
     for script in soup.find_all("script", type="application/ld+json"):
@@ -110,32 +198,29 @@ def extract_product_data(url: str) -> dict:
         except Exception:
             continue
 
-    js_data = {}
-    js_keys = ["__NEXT_DATA__", "__INITIAL_STATE__", "window.__DATA__", "window.pageData", "dataLayer"]
-    for script in soup.find_all("script"):
-        text = script.string or ""
-        if not text.strip():
-            continue
-        for key in js_keys:
-            if key not in text:
-                continue
-            key_idx = text.find(key)
-            after_key = text[key_idx + len(key):]
-            bracket_offset = -1
-            for i, ch in enumerate(after_key[:50]):
-                if ch in ("{", "["):
-                    bracket_offset = i
-                    break
-            if bracket_offset == -1:
-                continue
-            snippet = after_key[bracket_offset:]
-            parsed = extract_json_by_depth(snippet, snippet[0])
-            if parsed and isinstance(parsed, (dict, list)):
-                js_data[key] = parsed
+    js_data = extract_js_data_from_soup(soup)
 
-    if ld_data.get("name"):
-        result["title"] = ld_data["name"]
-    else:
+    # --- 상품명(Title) 추출 고도화 ---
+    candidate_title = ""
+    
+    # 1. 무신사 전용 셀렉터 (가장 정확)
+    if "musinsa.com" in url:
+        # 무신사 UI 상의 정확한 제목 엘리먼트
+        musinsa_el = (
+            soup.select_one("span[class*='GoodsName']") or 
+            soup.select_one("div[class*='GoodsName'] span") or
+            soup.select_one(".product-detail__items-title") or 
+            soup.select_one("h3.product-detail__items-title")
+        )
+        if musinsa_el:
+            candidate_title = musinsa_el.get_text(strip=True)
+
+    # 2. JSON-LD (ld_data)
+    if not candidate_title and ld_data.get("name"):
+        candidate_title = ld_data["name"]
+
+    # 3. 일반 메타 태그 및 H1, Title tag
+    if not candidate_title:
         for el in [
             soup.find("meta", property="og:title"),
             soup.find("meta", {"name": "og:title"}),
@@ -145,8 +230,18 @@ def extract_product_data(url: str) -> dict:
             if el:
                 text = el.get("content") or el.get_text(strip=True)
                 if text:
-                    result["title"] = text
+                    candidate_title = text
                     break
+
+    # 4. 범용 접미사 제거 및 정제
+    def clean_title_generic(t: str) -> str:
+        # 사이트명, 후기 등 흔한 접미사 제거
+        t = re.sub(r' - (후기|리뷰|무신사).*$', '', t)
+        t = re.sub(r' \| (무신사|올리브영|G마켓|11번가|옥션).*$', '', t)
+        t = re.sub(r' : 무신사 스토어.*$', '', t)
+        return t.strip()
+
+    result["title"] = clean_title_generic(candidate_title)
 
     price_patterns = [
         r'[\$₩¥€£][\d,\.]+',
@@ -210,89 +305,240 @@ def extract_product_data(url: str) -> dict:
                 src = img["src"]
                 result["main_image"] = src if src.startswith("http") else requests.compat.urljoin(url, src)
 
+    result["options"] = parse_options(url, soup, js_data)
+    return result
+
+
+def get_musinsa_options(product_id: str) -> list:
+    """무신사 옵션 API 직접 호출 (가장 정확)"""
+    options = []
+    # CLOTHES가 기본이나, 실패시 다른 코드도 고려 가능
+    for kind in ["CLOTHES", "GOODS"]:
+        api_url = f"https://goods-detail.musinsa.com/api2/goods/{product_id}/options?goodsSaleType=SALE&optKindCd={kind}"
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Referer": f"https://www.musinsa.com/products/{product_id}",
+            "Accept": "application/json"
+        }
+        try:
+            resp = requests.get(api_url, headers=headers, timeout=5)
+            if resp.status_code == 200:
+                data = resp.json().get("data", {})
+                basic = data.get("basic", [])
+                if not basic: continue
+                
+                for opt in basic:
+                    name = opt.get("name")
+                    vals = [v.get("name") for v in opt.get("optionValues", []) if not (v.get("isSoldOut") or "품절" in v.get("name", ""))]
+                    if name and vals:
+                        options.append({"name": name, "values": vals})
+                if options: break
+        except: pass
+    return options
+
+def parse_options(url: str, soup: BeautifulSoup, js_data: dict) -> list:
+    """사이트별 옵션 추출 로직 통합"""
     options = []
 
-    def flatten_option_values(raw_values):
-        result_vals = []
-        for item in raw_values:
-            if isinstance(item, str) and item.strip():
-                result_vals.append(item.strip())
-            elif isinstance(item, dict):
-                for key in ("name", "label", "value", "title", "text"):
-                    v = item.get(key)
-                    if v and isinstance(v, str) and v.strip():
-                        result_vals.append(v.strip())
-                        break
-            elif isinstance(item, list):
-                for sub in item:
-                    if isinstance(sub, str) and sub.strip():
-                        result_vals.append(sub.strip())
-                    elif isinstance(sub, dict):
-                        for key in ("name", "label", "value", "title", "text"):
-                            v = sub.get(key)
-                            if v and isinstance(v, str) and v.strip():
-                                result_vals.append(v.strip())
-                                break
-        return list(dict.fromkeys(result_vals))
+    # 1. 무신사 (API 우선, NEXT_DATA/pdp-data 백업)
+    if "musinsa.com" in url:
+        try:
+            # 0단계: API 시도
+            m_id = re.search(r'/products/(\d+)', url)
+            if m_id:
+                options = get_musinsa_options(m_id.group(1))
+            
+            if not options:
+                # 1단계: NEXT_DATA 시도
+                next_data = js_data.get("__NEXT_DATA__", {})
+                ms_options = next_data.get("props", {}).get("pageProps", {}).get("productView", {}).get("options", [])
+                
+                if not ms_options:
+                    initial_state = next_data.get("props", {}).get("pageProps", {}).get("initialState", {})
+                    ms_options = initial_state.get("goodsDetail", {}).get("goodsOption", {}).get("options", [])
 
-    for sel in soup.find_all("select"):
-        label = soup.find("label", {"for": sel.get("id")})
-        opt_name = label.get_text(strip=True) if label else (sel.get("name") or sel.get("id") or "option")
-        values = [
-            o.get_text(strip=True)
-            for o in sel.find_all("option")
-            if o.get_text(strip=True) and o.get("value") not in ("", None, "0", "-1")
-        ]
-        if values:
-            options.append({"name": opt_name, "values": values})
+                if not ms_options:
+                    initial_state = next_data.get("props", {}).get("pageProps", {}).get("initialState", {})
+                    ms_options = initial_state.get("goodsOption", {}).get("options", [])
 
+                # 2단계: pdp-data 시도
+                if not ms_options:
+                    pdp_data = js_data.get("pdp_data", {})
+                    ms_options = pdp_data.get("options", [])
+
+                for opt in ms_options:
+                    opt_name = opt.get("name") or opt.get("optionName") or "옵션"
+                    raw_vals = opt.get("values") or opt.get("optionValues") or []
+                    opt_vals = []
+                    for v in raw_vals:
+                        val_txt = v.get("name") or v.get("text") or v.get("optionValueName") or str(v)
+                        # 품절 여부 체크
+                        is_sold_out = v.get("isSoldOut", False) or v.get("stockStatus") == "out_of_stock"
+                        if val_txt and "(품절)" not in val_txt and not is_sold_out:
+                            opt_vals.append(val_txt.strip())
+                    if opt_vals:
+                        options.append({"name": opt_name, "values": opt_vals})
+            print(f"[DEBUG] Musinsa Options Found: {len(options)}")
+        except Exception as e:
+            print(f"[DEBUG] Musinsa Error: {e}")
+            pass
+
+    # 2. 11번가 (ProductData 또는 prdConfig)
+    elif "11st.co.kr" in url:
+        prd_config = js_data.get("window.prdConfig", {})
+        opt_list_data = prd_config.get("optionList", [])
+        
+        if opt_list_data:
+            for opt in opt_list_data:
+                name = opt.get("optionName") or "옵션"
+                vals = [v.get("optionValueName") for v in opt.get("optionValueList", []) if v.get("stockQty", 0) > 0]
+                if name and vals:
+                    options.append({"name": name, "values": vals})
+        
+        if not options:
+            # (기존 로직 유지)
+            for script in soup.find_all("script"):
+                txt = script.string or ""
+                if "prdNo" in txt and "optionList" in txt:
+                    try:
+                        m = re.search(r'optionList\s*:\s*(\[.*?\])\s*,', txt, re.DOTALL)
+                        if m:
+                            raw_opts = json.loads(m.group(1))
+                            for opt in raw_opts:
+                                name = opt.get("optNm") or "옵션"
+                                vals = [v.get("optValueNm") for v in opt.get("optValueList", []) if v.get("stckQty", 0) > 0]
+                                if name and vals:
+                                    options.append({"name": name, "values": vals})
+                    except: pass
+                    break
+
+        if not options:
+            # DOM 기반 (사이드바 드롭다운 등)
+            for drop in soup.select(".accordion_body.dropdown_list, .c_product_option_list, .dropdown_list"):
+                btns = drop.select("button.c_product_btn_select, .option_item, .dropdown_item button")
+                if btns:
+                    vals = []
+                    for b in btns:
+                        txt = b.get_text(strip=True).replace("선택하기", "").replace("판매가", "").replace("품절", "")
+                        txt = re.sub(r'[\d,]+원', '', txt).strip()
+                        if txt: vals.append(txt)
+                    if vals:
+                        options.append({"name": "옵션", "values": vals})
+
+    # 3. 올리브영 (Playwright 직접 추출 우선, 없으면 DOM 기반)
+    elif "oliveyoung.co.kr" in url:
+        # Playwright에서 직접 추출된 옵션이 있으면 최우선 사용
+        direct_opts = js_data.get("oliveyoung_options", [])
+        if direct_opts:
+            options.append({"name": "옵션", "values": list(dict.fromkeys(direct_opts))})
+        else:
+            # DOM 기반 fallback (정교한 셀렉터: 버튼만 타겟팅)
+            opt_list = soup.select("button.OptionSelector_option-item-btn__yq5_A, button[class*='OptionSelector_option-item-btn'], button[class*='option-item-btn']")
+            
+            if not opt_list:
+                opt_list = soup.select(".pkg_info .name, .goods_option_area .name, .pkg-info .name")
+                
+            vals = []
+            for btn in opt_list:
+                name_el = btn.select_one("span > span:nth-child(2) > span:first-child")
+                if name_el:
+                    val = name_el.get_text(strip=True)
+                else:
+                    val = btn.get_text(" ", strip=True)
+                
+                val = re.sub(r'\[.*?\]', '', val)
+                val = re.sub(r'[\d,]+원', '', val)
+                val = val.replace("오늘드림", "").replace("품절", "").strip()
+                val = re.sub(r'\s+', ' ', val).strip()
+                
+                if val and val not in vals and val not in ["옵션을 선택해 주세요", "선택"]:
+                    vals.append(val)
+            
+            if vals:
+                options.append({"name": "옵션", "values": list(dict.fromkeys(vals))})
+
+    # 4. 범용
     if not options:
-        for ul in soup.find_all("ul", {"class": re.compile(r'option|variant|swatch|color|size', re.I)}):
-            items = [li.get_text(strip=True) for li in ul.find_all("li") if li.get_text(strip=True)]
-            if items:
-                options.append({"name": " ".join(ul.get("class", ["option"])), "values": items})
+        def flatten_option_values(raw_values):
+            result_vals = []
+            for item in raw_values:
+                if isinstance(item, str) and item.strip():
+                    result_vals.append(item.strip())
+                elif isinstance(item, dict):
+                    for key in ("name", "label", "value", "title", "text"):
+                        v = item.get(key)
+                        if v and isinstance(v, str) and v.strip():
+                            result_vals.append(v.strip())
+                            break
+                elif isinstance(item, list):
+                    for sub in item:
+                        if isinstance(sub, str) and sub.strip():
+                            result_vals.append(sub.strip())
+                        elif isinstance(sub, dict):
+                            for key in ("name", "label", "value", "title", "text"):
+                                v = sub.get(key)
+                                if v and isinstance(v, str) and v.strip():
+                                    result_vals.append(v.strip())
+                                    break
+            return list(dict.fromkeys(result_vals))
 
-    if not options:
-        for group in soup.find_all(attrs={"class": re.compile(r'option|variant|swatch', re.I)}):
-            buttons = group.find_all(["button", "span", "a", "li"])
-            values = list(dict.fromkeys(b.get_text(strip=True) for b in buttons if b.get_text(strip=True)))
-            if len(values) > 1:
-                label_el = group.find_previous(["label", "dt", "th", "span"])
-                opt_name = label_el.get_text(strip=True) if label_el else "option"
+        for sel in soup.find_all("select"):
+            label = soup.find("label", {"for": sel.get("id")})
+            opt_name = label.get_text(strip=True) if label else (sel.get("name") or sel.get("id") or "option")
+            values = [
+                o.get_text(strip=True)
+                for o in sel.find_all("option")
+                if o.get_text(strip=True) and o.get("value") not in ("", None, "0", "-1")
+            ]
+            if values:
                 options.append({"name": opt_name, "values": values})
-                break
 
-    if not options:
-        def find_options_in_js(obj, depth=0):
-            if depth > 6:
+        if not options:
+            for ul in soup.find_all("ul", {"class": re.compile(r'option|variant|swatch|color|size', re.I)}):
+                items = [li.get_text(strip=True) for li in ul.find_all("li") if li.get_text(strip=True)]
+                if items:
+                    options.append({"name": " ".join(ul.get("class", ["option"])), "values": items})
+
+        if not options:
+            for group in soup.find_all(attrs={"class": re.compile(r'option|variant|swatch', re.I)}):
+                buttons = group.find_all(["button", "span", "a", "li"])
+                values = list(dict.fromkeys(b.get_text(strip=True) for b in buttons if b.get_text(strip=True)))
+                if len(values) > 1:
+                    label_el = group.find_previous(["label", "dt", "th", "span"])
+                    opt_name = label_el.get_text(strip=True) if label_el else "option"
+                    options.append({"name": opt_name, "values": values})
+                    break
+
+        if not options:
+            def find_options_in_js(obj, depth=0):
+                if depth > 6:
+                    return None
+                if isinstance(obj, dict):
+                    for k, v in obj.items():
+                        if any(kw in k.lower() for kw in ["option", "variant", "attribute", "spec"]):
+                            if isinstance(v, list) and v:
+                                cleaned = flatten_option_values(v)
+                                if cleaned:
+                                    return [{"name": k, "values": cleaned}]
+                            elif isinstance(v, dict) and v:
+                                return [{"name": k, "values": list(v.keys())}]
+                        found = find_options_in_js(v, depth + 1)
+                        if found:
+                            return found
+                elif isinstance(obj, list):
+                    for item in obj:
+                        found = find_options_in_js(item, depth + 1)
+                        if found:
+                            return found
                 return None
-            if isinstance(obj, dict):
-                for k, v in obj.items():
-                    if any(kw in k.lower() for kw in ["option", "variant", "attribute", "spec"]):
-                        if isinstance(v, list) and v:
-                            cleaned = flatten_option_values(v)
-                            if cleaned:
-                                return [{"name": k, "values": cleaned}]
-                        elif isinstance(v, dict) and v:
-                            return [{"name": k, "values": list(v.keys())}]
-                    found = find_options_in_js(v, depth + 1)
-                    if found:
-                        return found
-            elif isinstance(obj, list):
-                for item in obj:
-                    found = find_options_in_js(item, depth + 1)
-                    if found:
-                        return found
-            return None
 
-        for key, data in js_data.items():
-            hit = find_options_in_js(data)
-            if hit:
-                options = hit
-                break
-
-    result["options"] = options
-    return result
+            for key, data in js_data.items():
+                hit = find_options_in_js(data)
+                if hit:
+                    options = hit
+                    break
+    
+    return options
 
 
 def extract_with_naver_api(url: str) -> dict:
@@ -339,7 +585,7 @@ def extract_with_naver_api(url: str) -> dict:
             print("[naver api] 상품명 추출 시도 (Playwright)...")
             from playwright.sync_api import sync_playwright
             with sync_playwright() as p:
-                browser = p.chromium.launch(headless=False)
+                browser = p.chromium.launch(headless=True)
                 context = browser.new_context(
                     user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
                     locale="ko-KR",
@@ -403,17 +649,18 @@ def extract_with_playwright(url: str) -> dict:
         "musinsa.com":      "span.text-body_13px_semi",
         "oliveyoung.co.kr": "span.price",
         "gmarket.co.kr":    "strong.price_real",
-        "11st.co.kr":       "div.price",
+        "11st.co.kr":       ".price_real .value, div.price",
     }
 
     SITE_DETAIL_SELECTORS = {
         "smartstore.naver.com": ["div.se-main-container", "div._2kHJS", "div.se-viewer"],
         "oliveyoung.co.kr": ["div.prd-detail", "div#artcInfo", "div.detail-cont"],
         "gmarket.co.kr":    ["div#itemDetailArea", "div.item-detail-area"],
-        "11st.co.kr":       ["div#prdDetail", "div#tabDetail", "div.product-detail"],
+        "11st.co.kr":       ["#tabpanelDetail1", ".prdc_detail_area", "div#prdDetail", "div#tabDetail", "div.product-detail"],
     }
 
     detail_html_musinsa = ""
+    oy_options_direct = []
 
     with sync_playwright() as p:
         browser = p.chromium.launch(
@@ -439,6 +686,70 @@ def extract_with_playwright(url: str) -> dict:
         
         try:
             page.goto(url, wait_until="domcontentloaded", timeout=30000)
+            
+            # 11st 등의 동적 페이지를 위한 추가 대기
+            if "11st.co.kr" in url:
+                try:
+                    page.wait_for_selector(".c_product_info_title h1, h1.title", timeout=5000)
+                except: pass
+            
+            # Olive Young: 옵션 버튼 클릭 및 직접 텍스트 추출
+            if "oliveyoung.co.kr" in url:
+                # 동적 로딩을 위한 대기 시간 추가 (debug 결과 3초 필요)
+                page.wait_for_timeout(3000)
+                try:
+                    print("[DEBUG] Olive Young: 옵션 버튼 찾는 중...")
+                    # '선택해 주세요' 텍스트를 포함하는 버튼 클릭
+                    clicked = page.evaluate("""
+                        () => {
+                            const btns = Array.from(document.querySelectorAll('button'));
+                            const optBtn = btns.find(b => b.innerText && b.innerText.includes('선택해 주세요'));
+                            if (optBtn) {
+                                optBtn.click();
+                                return true;
+                            }
+                            return false;
+                        }
+                    """)
+                    
+                    if clicked:
+                        print("[DEBUG] Olive Young: 옵션 버튼 클릭 성공. 대기 중...")
+                        page.wait_for_timeout(3000)
+                        
+                        # 옵션 항목 로딩 대기
+                        try:
+                            page.wait_for_selector('button[class*="OptionSelector_option-item-btn"]', timeout=5000)
+                        except:
+                            print("[DEBUG] Olive Young: 옵션 항목 셀렉터 대기 타임아웃")
+                        
+                        # Playwright에서 직접 옵션 텍스트 추출
+                        oy_options = page.evaluate("""
+                            () => {
+                                const btns = document.querySelectorAll('button[class*="OptionSelector_option-item-btn"]');
+                                if (!btns.length) return [];
+                                return Array.from(btns).map(b => {
+                                    const nameEl = b.querySelector('span > span:nth-child(2) > span:first-child') || b;
+                                    let txt = nameEl.innerText || b.innerText;
+                                    txt = txt.replace(/\\[.*?\\]/g, '');
+                                    txt = txt.replace(/[\\d,]+원/g, '');
+                                    txt = txt.replace(/오늘드림/g, '').replace(/품절/g, '');
+                                    txt = txt.replace(/\\s+/g, ' ').trim();
+                                    return txt;
+                                }).filter(t => t && t.length > 0);
+                            }
+                        """)
+                        
+                        if oy_options:
+                            oy_options_direct = oy_options
+                            print(f"[DEBUG] Olive Young 옵션 직접 추출 성공: {len(oy_options)}개")
+                        else:
+                            print("[DEBUG] Olive Young: 옵션 버튼은 클릭했으나 항목 추출 실패")
+                    else:
+                        print("[DEBUG] Olive Young: '선택해 주세요' 버튼을 찾지 못함")
+                        
+                except Exception as e:
+                    print(f"[DEBUG] Olive Young Playwright Interaction Exception: {e}")
+
             page.wait_for_timeout(2000)
 
             # ── 전체 페이지 스크롤 로직 (숨겨진 이미지 지연 로딩 해제) ──
@@ -502,13 +813,50 @@ def extract_with_playwright(url: str) -> dict:
             browser.close()
 
     soup = BeautifulSoup(html, "html.parser")
-    result = {"title": "", "price": "", "main_image": "", "detail_html": "", "options": []}
+    js_data = extract_js_data_from_soup(soup)
+    if oy_options_direct:
+        js_data["oliveyoung_options"] = oy_options_direct
+    result = {
+        "title": "",
+        "price": "",
+        "main_image": "",
+        "detail_html": "",
+        "options": parse_options(url, soup, js_data)
+    }
 
     # ── Title ──────────────────────────────────────────────────────────
-    for el in [soup.find("meta", property="og:title"), soup.find("meta", {"name": "og:title"}), soup.find("h1")]:
-        if el:
-            text = el.get("content") or el.get_text(strip=True)
-            if text: result["title"] = text; break
+    candidate_title = ""
+    if "musinsa.com" in url:
+        musinsa_el = (
+            soup.select_one("span[class*='GoodsName']") or 
+            soup.select_one("div[class*='GoodsName'] span") or
+            soup.select_one(".product-detail__items-title") or 
+            soup.select_one("h3.product-detail__items-title")
+        )
+        if musinsa_el:
+            candidate_title = musinsa_el.get_text(strip=True)
+            
+    # 11st 지원 추가
+    if not candidate_title and "11st.co.kr" in url:
+        st11_el = soup.select_one(".c_product_info_title h1") or soup.select_one("h1.title")
+        if st11_el:
+            candidate_title = st11_el.get_text(strip=True)
+
+    if not candidate_title:
+        for el in [soup.find("meta", property="og:title"), soup.find("meta", {"name": "og:title"}), soup.find("h1")]:
+            if el:
+                text = el.get("content") or el.get_text(strip=True)
+                if text:
+                    candidate_title = text
+                    break
+
+    def clean_title_generic(t: str) -> str:
+        t = re.sub(r' - (후기|리뷰|무신사).*$', '', t)
+        t = re.sub(r' \| (무신사|올리브영|G마켓|11번가|옥션).*$', '', t)
+        t = re.sub(r' : 무신사 스토어.*$', '', t)
+        return t.strip()
+
+    result["title"] = clean_title_generic(candidate_title)
 
     # ── Price ──────────────────────────────────────────────────────────
     price = ""
@@ -540,6 +888,11 @@ def extract_with_playwright(url: str) -> dict:
         if el and el.get("content"):
             result["main_image"] = el["content"]
             break
+            
+    if not result["main_image"] and "11st.co.kr" in url:
+        st11_img = soup.select_one(".c_product_view_img img") or soup.select_one("#productImg img")
+        if st11_img:
+            result["main_image"] = st11_img.get("src") or st11_img.get("data-src")
 
     # ── Detail HTML 필터 강화 ───────────────────────────────────────
     # payment, benefit, policy 등 상세페이지가 아닌 부분을 강력하게 제외
@@ -625,6 +978,10 @@ def extract_product(url: str) -> dict:
             print("[naver api] 데이터 부족 → Playwright fallback")
         except Exception as e:
             print(f"[naver api] 실패: {e} → Playwright fallback")
+        return extract_with_playwright(url)
+
+    # 올리브영은 동적 옵션 로딩 필요 → 항상 Playwright 사용
+    if "oliveyoung.co.kr" in url:
         return extract_with_playwright(url)
 
     try:

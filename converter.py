@@ -2,6 +2,7 @@ import re
 import os
 import uuid
 import requests
+from datetime import datetime, timedelta
 from io import BytesIO
 from deep_translator import GoogleTranslator
 from PIL import Image
@@ -130,28 +131,39 @@ def make_image_square(image_url: str) -> str:
 
 def format_options_qoo10(options: list) -> str:
     """
-    Qoo10 옵션 형식 (번역 추가 적용):
-    옵션명||*옵션값||*옵션가격||*재고수량||*판매자옵션코드$$
+    Qoo10 옵션 형식 (N열):
+    1단계: 옵션명1||*옵션값1||*옵션가격||*재고수량||*판매자옵션코드$$
+    2단계: 옵션명1||*옵션값1||*옵션명2||*옵션값2||*옵션가격||*재고수량||*판매자옵션코드$$
     """
     if not options:
         return ""
 
     parts = []
-    for opt in options[:2]:  # 최대 2단계
-        name_ko = opt.get("name", "").strip()
-        name_ja = translate_ko_to_ja(name_ko)  # 옵션명 번역
-        
-        values = opt.get("values", [])[:20]  # 최대 20개
-        values = [v.strip() for v in values if v.strip()]
-        
-        if not name_ko or not values:
-            continue
-            
-        for val_ko in values:
-            val_ja = translate_ko_to_ja(val_ko) # 옵션값 번역
-            # 옵션명||*옵션값||*추가가격(0)||*재고수량(100)||*판매자코드(빈값)$$
+    # Qoo10은 N열 기준 최대 2단계까지 지원
+    if len(options) == 1:
+        opt = options[0]
+        name_ja = translate_ko_to_ja(opt.get("name", "Option"))
+        values = opt.get("values", [])[:20]
+        for val in values:
+            val_ja = translate_ko_to_ja(val)
+            # 옵션명||*옵션값||*추가가격(0)||*재고수량(100)||*판매자코드(빈값)
             parts.append(f"{name_ja}||*{val_ja}||*0||*100||*")
-
+    elif len(options) >= 2:
+        opt1 = options[0]
+        opt2 = options[1]
+        name1_ja = translate_ko_to_ja(opt1.get("name", "Option1"))
+        name2_ja = translate_ko_to_ja(opt2.get("name", "Option2"))
+        
+        vals1 = opt1.get("values", [])[:20]
+        vals2 = opt2.get("values", [])[:20]
+        
+        for v1 in vals1:
+            v1_ja = translate_ko_to_ja(v1)
+            for v2 in vals2:
+                v2_ja = translate_ko_to_ja(v2)
+                # 2단계 형식: 명1||*값1||*명2||*값2||*가격||*재고||*코드
+                parts.append(f"{name1_ja}||*{v1_ja}||*{name2_ja}||*{v2_ja}||*0||*100||*")
+                
     return "$$".join(parts) + "$$" if parts else ""
 
 
@@ -214,6 +226,11 @@ def convert_to_qoo10_row(product: dict) -> dict:
     final_weight_kg = (weight_g + 500) / 1000.0
     weight_str = f"{final_weight_kg:.1f}"
 
+    # 8. 판매 시작일/종료일 계산 (오늘 ~ 5년 뒤)
+    now = datetime.now()
+    start_date = now.strftime("%Y-%m-%d")
+    end_date = (now + timedelta(days=365*5)).strftime("%Y-%m-%d")
+
 
     return {
         "item_name":            title_ja,  # 번역된 상품명 적용
@@ -229,8 +246,8 @@ def convert_to_qoo10_row(product: dict) -> dict:
         "image_other_url":      "",
 
         "item_description":     translate_html_content(product.get("detail_html", "")),
-        "start_date":           "",
-        "end_date":             "",
+        "start_date":           start_date,
+        "end_date":             end_date, # 판매종료일 (5년 뒤)
         "available_shipping_date": 3,
         "Shipping_number":      "665405", # 고정 배송비 코드
         "item_condition_type":  "1",

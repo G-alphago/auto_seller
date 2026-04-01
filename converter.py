@@ -9,6 +9,7 @@ from PIL import Image
 from bs4 import BeautifulSoup
 from classifier import match_category
 from brand_classifier import extract_brand_info
+from scraper import generate_product_description
 
 
 def get_usd_jpy_rate() -> float:
@@ -77,6 +78,35 @@ def translate_html_content(html_str: str) -> str:
         return html_str
 
 
+def extract_only_images_from_html(html_str: str) -> str:
+    """
+    상세 HTML에서 <img> 태그만 추출하고 스타일 보정 (링크/배너/텍스트 제거용)
+    """
+    if not html_str:
+        return ""
+    try:
+        soup = BeautifulSoup(html_str, "html.parser")
+        images = soup.find_all("img")
+        img_tags = []
+        for img in images:
+            # 큐텐 권장 스타일 적용 (중앙 정렬 및 반응형 너비)
+            img['style'] = "max-width: 100%; display: block; margin: 10px auto;"
+            # lazy loading 방지를 위해 src 속성 보장 (data-src 등 처리)
+            if not img.get('src') and img.get('data-src'):
+                img['src'] = img['data-src']
+            
+            # 불필요한 속성 제거
+            for attr in ['onclick', 'border', 'hspace', 'vspace']:
+                if img.has_attr(attr):
+                    del img[attr]
+            
+            img_tags.append(str(img))
+        return "".join(img_tags)
+    except Exception as e:
+        print(f"[이미지 추출 오류] {e}")
+        return ""
+
+
 def make_image_square(image_url: str) -> str:
     """
     이미지를 큐텐 가이드에 맞춰 정사각형(흰색 배경 패딩)으로 변환 후 로컬 저장
@@ -89,26 +119,33 @@ def make_image_square(image_url: str) -> str:
         resp.raise_for_status()
         
         img = Image.open(BytesIO(resp.content)).convert("RGB")
+        # 1. 원색 변환 및 투명 배경 대응
+        if img.mode in ("RGBA", "P"):
+            background = Image.new("RGB", img.size, (255, 255, 255))
+            background.paste(img, mask=img.split()[3] if img.mode == "RGBA" else None)
+            img = background
+        else:
+            img = img.convert("RGB")
+
         width, height = img.size
+        print(f"[이미지 처리] {width}x{height} 상품 이미지 정규화 중 (상하좌우 여백 확보)...")
         
-        # 이미 정사각형이면 원본 URL을 그대로 사용 (업로드 편의성)
-        if width == height:
-            return image_url
-            
-        print(f"[이미지 처리] {width}x{height} 비율을 정사각형으로 변환 중...")
+        # 2. 800x800 캔버스를 기준으로 작업 (큐텐 권장 최소 사이즈)
+        target_size = 800
+        # 상품 이미지가 차지할 최대 영역 (약 80% 사용, 상하좌우 10%씩 여백 확보)
+        max_inner_size = int(target_size * 0.8)
         
-        # 가장 긴 변을 기준으로 정사각형 캔버스 생성 (배경색: 흰색)
-        new_size = max(width, height)
-        square_img = Image.new("RGB", (new_size, new_size), (255, 255, 255))
+        # 3. 원본 이미지 비율 유지하며 max_inner_size에 맞게 리사이징
+        ratio = min(max_inner_size / width, max_inner_size / height)
+        new_w = int(width * ratio)
+        new_h = int(height * ratio)
+        img_resized = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
         
-        # 원본 이미지를 중앙에 배치
-        left = (new_size - width) // 2
-        top = (new_size - height) // 2
-        square_img.paste(img, (left, top))
-        
-        # 큐텐 권장 사이즈(최소 600x600 이상)로 리사이징
-        if new_size > 800:
-            square_img = square_img.resize((800, 800), Image.Resampling.LANCZOS)
+        # 4. 800x800 흰색 캔버스 생성 및 중앙 배치
+        square_img = Image.new("RGB", (target_size, target_size), (255, 255, 255))
+        left = (target_size - new_w) // 2
+        top = (target_size - new_h) // 2
+        square_img.paste(img_resized, (left, top))
         
         # 로컬 폴더에 저장 (outputs/images 폴더 생성)
         save_dir = os.path.join(os.getcwd(), "outputs", "images")
@@ -189,7 +226,11 @@ def clean_item_name(title: str) -> str:
 
 
 def convert_to_qoo10_row(product: dict) -> dict:
-    """크롤링 결과 → Qoo10 엑셀 업로드 형식 변환"""
+    """크롤링 결과 → Qoo10 엑셀 업로드 형식 변환 (판매기간 자동 설정 추가)"""
+    # 판매 시작일/종료일 계산 (5년 뒤)
+    now = datetime.now()
+    start_date = now.strftime("%Y-%m-%d")
+    end_date = (now + timedelta(days=365 * 5)).strftime("%Y-%m-%d")
     
     # 1. 가격 처리
     price_raw = product.get("price", "")
@@ -203,16 +244,32 @@ def convert_to_qoo10_row(product: dict) -> dict:
 
     # 2. 브랜드 추출 및 상품명 정제
     raw_title = product.get("title", "")
-    brand_code, cleaned_title_ko = extract_brand_info(raw_title)
+    scraped_brand = product.get("scraped_brand")
+    brand_code, cleaned_title_ko = extract_brand_info(raw_title, scraped_brand)
     
     # 3. 사이트별 특수문자 및 불필요 키워드 추가 정제
     title_ko = clean_item_name(cleaned_title_ko)
     print(f"[번역] 상품명 번역 중... ({title_ko[:20]}...)")
     title_ja = translate_ko_to_ja(title_ko)
 
-    # 4. 메인 이미지 큐텐 규격화 (정사각형 패딩)
+    # 4. 이미지 처리 (큐텐 업로드를 위해 원본 URL 유지하면서 로컬 가공본 생성)
     main_image_url = product.get("main_image", "")
-    processed_image_path = make_image_square(main_image_url)
+    try:
+        # 큐텐 가이드에 맞춘 가공본은 로컬(outputs/images)에 백업용으로 저장만 합니다.
+        make_image_square(main_image_url)
+    except Exception as e:
+        print(f"[이미지 가공 경고] {e}")
+        
+    processed_main_image = main_image_url # 엑셀에는 반드시 http:// 주소가 들어가야 함
+
+    additional_images = product.get("additional_images", [])[:50]
+    for img_url in additional_images:
+        if img_url:
+            try:
+                make_image_square(img_url)
+            except: pass
+    
+    image_other_str = "$$".join(additional_images) + "$$" if additional_images else ""
 
     # 5. 옵션 변환 및 번역
     print("[번역] 옵션 번역 중...")
@@ -226,11 +283,14 @@ def convert_to_qoo10_row(product: dict) -> dict:
     final_weight_kg = (weight_g + 500) / 1000.0
     weight_str = f"{final_weight_kg:.1f}"
 
-    # 8. 판매 시작일/종료일 계산 (오늘 ~ 5년 뒤)
-    now = datetime.now()
-    start_date = now.strftime("%Y-%m-%d")
-    end_date = (now + timedelta(days=365*5)).strftime("%Y-%m-%d")
-
+    # 9. 제미나이 프리미엄 상품 설명 생성 (선택 사항)
+    print(f"[Gemini] 프리미엄 상품 설명 생성 중... ({title_ko[:20]}...)")
+    # 검색 정보 대신 현재 수집된 상품 정보를 기반으로 생성
+    gemini_desc = generate_product_description(title_ko)
+    
+    # 10. 상세페이지 조립 (이미지 추출 + 제미나이 설명 하단 배치)
+    only_images = extract_only_images_from_html(product.get("detail_html", ""))
+    combined_detail = f"{only_images}<br><br>{gemini_desc}" if gemini_desc else only_images
 
     return {
         "item_name":            title_ja,  # 번역된 상품명 적용
@@ -242,10 +302,10 @@ def convert_to_qoo10_row(product: dict) -> dict:
         "quantity":             100,
         "option_info":          option_str, # 번역된 옵션 적용
 
-        "image_main_url":       main_image_url, # HTTP URL 형태 유지
-        "image_other_url":      "",
+        "image_main_url":       processed_main_image, # 흰색 배경 처리된 이미지 경로 사용
+        "image_other_url":      image_other_str,      # 가공된 추가 이미지들 ($$ 구분)
 
-        "item_description":     translate_html_content(product.get("detail_html", "")),
+        "item_description":     combined_detail,
         "start_date":           start_date,
         "end_date":             end_date, # 판매종료일 (5년 뒤)
         "available_shipping_date": 3,

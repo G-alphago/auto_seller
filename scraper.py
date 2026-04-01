@@ -7,7 +7,14 @@ import time
 from urllib.parse import urlparse
 from playwright.sync_api import sync_playwright
 from dotenv import load_dotenv
+import google.generativeai as genai
+
 load_dotenv()
+
+# Gemini API 설정
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+if GEMINI_API_KEY:
+    genai.configure(api_key=GEMINI_API_KEY)
 
 def extract_weight(text: str) -> float:
     """텍스트에서 무게 정보(g) 추출. 없으면 0.0 반환"""
@@ -51,6 +58,7 @@ def extract_product_data(url: str) -> dict:
         "title": "",
         "price": "",
         "main_image": "",
+        "additional_images": [],
         "detail_html": "",
         "options": []
     }
@@ -169,6 +177,7 @@ def extract_product_data(url: str) -> dict:
         "title": "",
         "price": "",
         "main_image": "",
+        "additional_images": [],
         "detail_html": "",
         "options": []
     }
@@ -286,7 +295,11 @@ def extract_product_data(url: str) -> dict:
 
     if ld_data.get("image"):
         img_val = ld_data["image"]
-        result["main_image"] = img_val[0] if isinstance(img_val, list) else img_val
+        if isinstance(img_val, list):
+            result["main_image"] = img_val[0]
+            result["additional_images"] = img_val[1:]
+        else:
+            result["main_image"] = img_val
     else:
         for el in [
             soup.find("meta", property="og:image"),
@@ -296,6 +309,16 @@ def extract_product_data(url: str) -> dict:
             if el and el.get("content"):
                 result["main_image"] = el["content"]
                 break
+        
+        # 추가 이미지 셀렉터 (무신사 등)
+        gallery_imgs = soup.select("div.thumb img, .product-detail__items-images img, #product_images img")
+        for g_img in gallery_imgs:
+            src = g_img.get("src") or g_img.get("data-src")
+            if src:
+                full_url = src if src.startswith("http") else requests.compat.urljoin(url, src)
+                if full_url not in result["additional_images"] and full_url != result["main_image"]:
+                    result["additional_images"].append(full_url)
+
         if not result["main_image"]:
             img = (
                 soup.find("img", {"id":    re.compile(r'main|product|thumb', re.I)}) or
@@ -642,6 +665,52 @@ def extract_with_naver_api(url: str) -> dict:
     }
 
 
+def generate_product_description(title: str, additional_info: str = "") -> str:
+    """상품명을 기반으로 일본어 상품 소개 및 사용법 HTML 생성 (모던 테마 적용)"""
+    if not GEMINI_API_KEY or not title:
+        return ""
+
+    prompt = f"""
+    당신은 일본 시장을 전문으로 하는 이커머스 MD입니다.
+    한국의 상품 정보(제목, 특징)를 바탕으로 일본 구매자에게 매력적인 상세 페이지 섹션을 일본어로 생성해주세요.
+    
+    [상품 정보]
+    상품명: {title}
+    추가 정보: {additional_info}
+    
+    [요구 사항]
+    1. 언어: 일본어 (자연스럽고 정중한 Desu/Masu 스타일)
+    2. 구성:
+       - [Introduction]: 캐치프레이즈와 상품의 가치 제안.
+       - [Key Features]: 상품의 3가지 주요 특징 (아이콘 또는 글머리 기호 사용).
+       - [How to Use]: 상세한 단계별 사용 방법.
+       - [Why You'll Love It]: 구매를 유도하는 마무리 멘트.
+    3. 형식: 순수 HTML (<div> 구조). Markdown 코드 블록 없이 결과만 출력하세요.
+    4. 제한 사항: **절대로 <a> (링크) 태그나 <script> 태그를 포함하지 마세요.** 오직 텍스트와 레이아웃용 태그(div, h2, h3, p, ul, li, br)만 사용하세요.
+    5. 디자인 (모던 프리미엄 테마):
+       - 폰트: 'Noto Sans JP', sans-serif (일본 표준 폰트).
+       - 색상: 화이트에서 연한 그레이(#F9FAFB)로 이어지는 은은한 그라데이션 배경.
+       - 포인트 컬러: 세련된 차콜(#333333) 및 부드러운 포인트 색상.
+       - 레이아웃: 좌우 여백 20px, 상하 여백 40px, 둥근 테두리(12px).
+       - 모바일 대응: max-width: 100% 적용.
+    """
+
+    try:
+        model = genai.GenerativeModel('gemini-2.5-flash') # 할당량 넉넉한 2.5-flash 모델 사용
+        response = model.generate_content(prompt)
+        content = response.text.strip()
+        
+        if content.startswith("```html"):
+            content = content.replace("```html", "").replace("```", "").strip()
+        elif content.startswith("```"):
+            content = content.replace("```", "").strip()
+            
+        return content
+    except Exception as e:
+        print(f"[Gemini Error] 상품 설명 생성 실패: {e}")
+        return ""
+
+
 def extract_with_playwright(url: str) -> dict:
     from playwright.sync_api import sync_playwright
 
@@ -746,9 +815,84 @@ def extract_with_playwright(url: str) -> dict:
                             print("[DEBUG] Olive Young: 옵션 버튼은 클릭했으나 항목 추출 실패")
                     else:
                         print("[DEBUG] Olive Young: '선택해 주세요' 버튼을 찾지 못함")
-                        
+                    
                 except Exception as e:
                     print(f"[DEBUG] Olive Young Playwright Interaction Exception: {e}")
+
+            # ── 브랜드 수집 (사이트별) ──
+            scraped_brand_val = ""
+            current_url = page.url
+            is_redirected = "products/" not in current_url and "musinsa.com" in url
+            
+            if is_redirected:
+                print(f"[DEBUG] 리다이렉트 감지: {url} -> {current_url} (품절/비공개 예상)")
+                if "recommend" in current_url:
+                    html = "<html><body>PRODUCT_NOT_FOUND</body></html>"
+            else:
+                try:
+                    if "musinsa.com" in url:
+                        # 1. JS 객체 직접 접근 (window.__NEXT_DATA__의 goodsDetail이 가장 정확함)
+                        scraped_brand_val = page.evaluate("""
+                            () => {
+                                try {
+                                    const nextData = window.__NEXT_DATA__ || {};
+                                    const gd = nextData.props.pageProps.goodsDetail || {};
+                                    if (gd.brandEnglishNm) return gd.brandEnglishNm;
+                                    if (gd.brandNm) return gd.brandNm;
+
+                                    const mss = window.__MSS__ || {};
+                                    const productState = (mss.product && mss.product.state) || {};
+                                    const bi = productState.brandInfo || {};
+                                    if (bi.brandEnglishName) return bi.brandEnglishName;
+                                    if (bi.brandName) return bi.brandName;
+
+                                    const pv = nextData.props.pageProps.productView || {};
+                                    const b = pv.brandInfo || {};
+                                    return b.nameEn || b.nameKo || pv.brandName || '';
+                                } catch(e) { return ''; }
+                            }
+                        """)
+                    
+                    if not scraped_brand_val:
+                        if "musinsa.com" in url:
+                            scraped_brand_val = page.evaluate("""
+                                () => {
+                                    const b1 = document.querySelector('.gtm-click-brand');
+                                    if (b1 && b1.innerText.trim()) return b1.innerText.trim();
+                                    const b2 = document.querySelector('a[href*="/brand/"]');
+                                    if (b2 && b2.innerText.trim()) return b2.innerText.trim();
+                                    const b3 = document.querySelector('[class*="BrandLink"], [class*="BrandName"], .product-detail__brand-name');
+                                    if (b3 && b3.innerText.trim()) return b3.innerText.trim();
+                                    return '';
+                                }
+                            """)
+                        elif "oliveyoung.co.kr" in url:
+                            scraped_brand_val = page.evaluate("""
+                                () => {
+                                    const b = document.querySelector('.brand_name, p.prd_brand, .brand-title');
+                                    return b ? b.innerText.trim() : '';
+                                }
+                            """)
+
+                    # [브랜드 정제 규칙] 한글/영문 혼용 시 영문만 추출, 영문이 없으면 한글
+                    if scraped_brand_val:
+                        # 1. 괄호 안 영문 추출 시도
+                        match_in = re.search(r'\(([^)]+)\)', scraped_brand_val)
+                        # 2. 괄호 밖 영문 추출 시도 (괄호 밖이 영문인 경우)
+                        match_out = re.search(r'^([a-zA-Z0-9\s&]+)\(', scraped_brand_val)
+                        
+                        if match_in and re.search(r'[a-zA-Z]', match_in.group(1)):
+                            scraped_brand_val = match_in.group(1).strip()
+                        elif match_out and re.search(r'[a-zA-Z]', match_out.group(1)):
+                            scraped_brand_val = match_out.group(1).strip()
+                        elif re.search(r'[a-zA-Z]', scraped_brand_val):
+                            # 한글 제거하고 영문/숫자/공백 등만 남김
+                            scraped_brand_val = re.sub(r'[ㄱ-ㅎㅏ-ㅣ가-힣]', '', scraped_brand_val).strip()
+
+                    if scraped_brand_val:
+                        print(f"[DEBUG] {url} 브랜드 수집 최종: {scraped_brand_val}")
+                except Exception as e:
+                    print(f"[DEBUG] 브랜드 수집 중 오류: {e}")
 
             page.wait_for_timeout(2000)
 
@@ -774,9 +918,10 @@ def extract_with_playwright(url: str) -> dict:
             """)
             page.wait_for_timeout(2000) # 스크롤 후 이미지가 뜰 때까지 잠시 대기
 
-            # ── 무신사 전용: JS로 상세 이미지 직접 추출 ──────────────
+            # ── 무신사 전용: '더보기' 버튼 클릭 및 상세 이미지 추출 ──────────────
             if "musinsa.com" in url:
                 try:
+                    # 1. 상세정보 탭 클릭
                     page.evaluate("""
                         () => {
                             const all = document.querySelectorAll('button, a, li');
@@ -786,7 +931,19 @@ def extract_with_playwright(url: str) -> dict:
                             }
                         }
                     """)
+                    page.wait_for_timeout(1000)
+                    
+                    # 2. '더보기' 버튼 클릭 (텍스트 기반)
+                    page.evaluate("""
+                        () => {
+                            const btns = Array.from(document.querySelectorAll('button'));
+                            const moreBtn = btns.find(b => b.innerText && (b.innerText.includes('상품 정보 더보기') || b.innerText.includes('상세정보 더보기')));
+                            if (moreBtn) moreBtn.click();
+                        }
+                    """)
                     page.wait_for_timeout(2000)
+
+                    # 3. 상세 이미지 추출
                     detail_imgs = page.evaluate("""
                         () => {
                             const imgs = [];
@@ -816,25 +973,61 @@ def extract_with_playwright(url: str) -> dict:
     js_data = extract_js_data_from_soup(soup)
     if oy_options_direct:
         js_data["oliveyoung_options"] = oy_options_direct
+
+    # 추가 이미지(갤러리) 수집 로직
+    additional_images = []
+    # 갤러리/썸네일 이미지 추출 (Playwright가 렌더링한 최종 DOM에서)
+    img_selectors = [
+        ".Pagination__PaginationContainer-sc-1yn5os-1 img", # 무신사 썸네일
+        "div.thumb img", ".product-detail__items-images img", 
+        "#product_images img", ".prd_img_area img", ".c_product_view_img img"
+    ]
+    for sel in img_selectors:
+        for img in soup.select(sel):
+            src = img.get("src") or img.get("data-src") or img.get("data-original")
+            if src:
+                # 썸네일의 경우 큰 이미지로 변환 시도 (무신사 특화)
+                if "musinsa.com" in url and ("_small" in src or "_60." in src):
+                    src = src.replace("_small", "_big").replace("_60.", "_500.")
+                
+                full_url = requests.compat.urljoin(url, src)
+                if full_url not in additional_images:
+                    additional_images.append(full_url)
+
     result = {
         "title": "",
         "price": "",
         "main_image": "",
+        "additional_images": additional_images,
+        "scraped_brand": scraped_brand_val, # 수집된 브랜드명 추가
         "detail_html": "",
         "options": parse_options(url, soup, js_data)
     }
 
-    # ── Title ──────────────────────────────────────────────────────────
     candidate_title = ""
     if "musinsa.com" in url:
-        musinsa_el = (
-            soup.select_one("span[class*='GoodsName']") or 
-            soup.select_one("div[class*='GoodsName'] span") or
-            soup.select_one(".product-detail__items-title") or 
-            soup.select_one("h3.product-detail__items-title")
-        )
-        if musinsa_el:
-            candidate_title = musinsa_el.get_text(strip=True)
+        # window.__NEXT_DATA__.props.pageProps.goodsDetail.goodsNm 이 가장 정확함
+        mss_goods_nm = ""
+        try:
+            next_data = js_data.get("__NEXT_DATA__", {})
+            mss_goods_nm = next_data.get("props", {}).get("pageProps", {}).get("goodsDetail", {}).get("goodsNm", "")
+            if not mss_goods_nm:
+                mss = js_data.get("__MSS__", {})
+                mss_goods_nm = mss.get("product", {}).get("state", {}).get("goodsNm", "")
+        except: pass
+        
+        if not mss_goods_nm:
+            musinsa_el = (
+                soup.select_one("span[class*='GoodsName']") or 
+                soup.select_one("div[class*='GoodsName'] span") or
+                soup.select_one(".product-detail__items-title") or 
+                soup.select_one("h3.product-detail__items-title") or
+                soup.select_one("div.FixedArea__Container h3") or
+                soup.select_one("h3")
+            )
+            candidate_title = musinsa_el.get_text(strip=True) if musinsa_el else ""
+        else:
+            candidate_title = mss_goods_nm
             
     # 11st 지원 추가
     if not candidate_title and "11st.co.kr" in url:

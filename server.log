@@ -1,0 +1,41 @@
+/Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/scraper.py:10: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+ * Serving Flask app 'app'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.45.48:8080
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [01/Apr/2026 16:33:34] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 16:34:30] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 16:35:29] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 16:36:26] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 16:37:38] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 16:39:09] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 16:40:23] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 16:41:51] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 16:43:00] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 16:43:47] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 16:43:49] "POST /finalize HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 17:06:06] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 17:07:58] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 17:08:20] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 17:09:13] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 17:09:35] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 17:09:57] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 17:10:33] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 17:10:55] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 17:11:18] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 17:11:40] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 17:12:06] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 17:12:08] "POST /finalize HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 17:13:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 17:13:25] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -

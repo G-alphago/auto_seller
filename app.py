@@ -16,6 +16,57 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/process_item", methods=["POST"])
+def process_item():
+    """단일 URL에 대해 크롤링 및 데이터 변환 수행"""
+    data = request.get_json()
+    url = (data or {}).get("url", "").strip()
+    
+    if not url or not url.startswith("http"):
+        return jsonify({"error": "유효하지 않은 URL입니다."}), 400
+
+    try:
+        product = extract_product(url)
+        row = convert_to_qoo10_row(product)
+        row["source_url"] = url
+        return jsonify({"success": True, "row": row})
+    except Exception as e:
+        print(f"[항목 처리 오류] {url}: {e}")
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/finalize", methods=["POST"])
+def finalize():
+    """수집된 데이터 리스트를 바탕으로 최종 엑셀 파일 생성"""
+    data = request.get_json()
+    rows = (data or {}).get("rows", [])
+
+    if not rows:
+        return jsonify({"error": "생성할 데이터가 없습니다."}), 400
+
+    try:
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        upload_file = f"qoo10_upload_{timestamp}.xlsx"
+        summary_file = f"summary_{timestamp}.xlsx"
+
+        upload_path  = save_to_excel(rows, output_dir=OUTPUT_DIR, filename=upload_file)
+        summary_path = save_summary_excel(rows, output_dir=OUTPUT_DIR, filename=summary_file)
+
+        # 프리뷰 이미지는 첫 번째 상품의 이미지 사용
+        preview_image = rows[0].get("image_main_url", "")
+
+        return jsonify({
+            "success": True,
+            "count": len(rows),
+            "upload_file": upload_file,
+            "summary_file": summary_file,
+            "preview_image": preview_image
+        })
+    except Exception as e:
+        traceback.print_exc()
+        return jsonify({"error": f"파일 생성 중 오류 발생: {str(e)}"}), 500
+
+
 @app.route("/process", methods=["POST"])
 def process():
     data = request.get_json()
@@ -88,4 +139,4 @@ def serve_outputs(filename):
 
 if __name__ == "__main__":
     os.makedirs(OUTPUT_DIR, exist_ok=True)
-    app.run(debug=True, port=8080)
+    app.run(debug=False, host='0.0.0.0', port=8080)

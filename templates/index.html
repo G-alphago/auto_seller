@@ -417,22 +417,23 @@
 
     <!-- Progress Steps -->
     <div class="progress-wrap" id="progressWrap">
+      <div id="progressStatus" style="font-family: var(--mono); font-size: 11px; margin-bottom: 12px; color: var(--accent2);"></div>
       <div class="progress-steps">
         <div class="step" id="step1">
           <div class="step-dot"></div>
-          <span>01 — URL 크롤링 중...</span>
+          <span>01 — 스크래핑 및 데이터 추출</span>
         </div>
         <div class="step" id="step2">
           <div class="step-dot"></div>
-          <span>02 — 상품 데이터 파싱 중...</span>
+          <span>02 — AI 상품 설명 생성 (Gemini)</span>
         </div>
         <div class="step" id="step3">
           <div class="step-dot"></div>
-          <span>03 — Qoo10 포맷 변환 중...</span>
+          <span>03 — 데이터 변환 및 번역</span>
         </div>
         <div class="step" id="step4">
           <div class="step-dot"></div>
-          <span>04 — 엑셀 파일 생성 중...</span>
+          <span>04 — 최종 엑셀 파일 생성</span>
         </div>
       </div>
     </div>
@@ -524,46 +525,88 @@
     // Reset UI
     hideError();
     hideResult();
-    document.getElementById('progressWrap').classList.add('visible');
-    document.getElementById('runBtn').disabled = true;
+    const progressWrap = document.getElementById('progressWrap');
+    const progressStatus = document.getElementById('progressStatus');
+    const runBtn = document.getElementById('runBtn');
+    
+    progressWrap.classList.add('visible');
+    runBtn.disabled = true;
     resetSteps();
 
-    // Animate steps
-    setStep('step1', 'active');
-    
+    const finalizedRows = [];
+    let hasError = false;
+
     try {
-      const res = await fetch('/process', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ urls })
-      });
+      for (let i = 0; i < urls.length; i++) {
+        const url = urls[i];
+        const stepNum = i + 1;
+        progressStatus.textContent = `[상품 ${stepNum}/${urls.length}] 처리 중...`;
+        
+        resetSteps();
+        setStep('step1', 'active');
+        
+        try {
+          const res = await fetch('/process_item', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ url })
+          });
 
-      const data = await res.json();
+          const data = await res.json();
+          if (!res.ok || data.error) {
+            console.error(`Error processing ${url}:`, data.error);
+            setStep('step1', 'error');
+            // 개별 오류는 건너뛰거나 표시 가능하나 일단 계속 진행
+            continue; 
+          }
 
-      if (!res.ok || data.error) {
-        ['step1','step2','step3','step4'].forEach(id => setStep(id, 'error'));
-        showError(data.error || '알 수 없는 오류가 발생했습니다.');
+          setStep('step1', 'done');
+          setStep('step2', 'active');
+          await delay(200);
+          setStep('step2', 'done');
+          setStep('step3', 'active');
+          await delay(200);
+          setStep('step3', 'done');
+          
+          finalizedRows.push(data.row);
+        } catch (itemErr) {
+          console.error(`Fetch error for ${url}:`, itemErr);
+          setStep('step1', 'error');
+        }
+      }
+
+      if (finalizedRows.length === 0) {
+        showError('유효한 상품 데이터를 하나도 추출하지 못했습니다.');
         return;
       }
 
-      setStep('step1', 'done');
-      setStep('step2', 'done');
-      setStep('step3', 'done');
-      await delay(300);
+      // 최종 파일 생성
+      progressStatus.textContent = `[완료] 엑셀 파일 생성 중...`;
       setStep('step4', 'active');
-      await delay(400);
-      setStep('step4', 'done');
+      
+      const finalRes = await fetch('/finalize', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ rows: finalizedRows })
+      });
 
-      // Show result
-      showResult(data);
+      const finalData = await finalRes.json();
+      if (!finalRes.ok || finalData.error) {
+        setStep('step4', 'error');
+        showError(finalData.error || '최종 파일 생성에 실패했습니다.');
+        return;
+      }
+
+      setStep('step4', 'done');
+      showResult(finalData);
       document.getElementById('lastTime').textContent =
         '마지막 실행: ' + new Date().toLocaleTimeString('ko-KR');
 
     } catch (e) {
-      ['step1','step2','step3','step4'].forEach(id => setStep(id, 'error'));
       showError('서버 연결 오류: ' + e.message);
     } finally {
-      document.getElementById('runBtn').disabled = false;
+      runBtn.disabled = false;
+      progressStatus.textContent = finalizedRows.length > 0 ? '모든 작업이 완료되었습니다.' : '작업이 중단되었습니다.';
     }
   }
 

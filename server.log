@@ -39,3 +39,1661 @@ https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/READM
 127.0.0.1 - - [01/Apr/2026 17:12:08] "POST /finalize HTTP/1.1" 200 -
 127.0.0.1 - - [01/Apr/2026 17:13:24] "GET / HTTP/1.1" 200 -
 127.0.0.1 - - [01/Apr/2026 17:13:25] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [02/Apr/2026 13:40:06] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 13:46:15] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 13:46:37] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 13:47:00] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 13:47:22] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 13:47:46] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 13:48:17] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 13:48:43] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 13:49:10] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 13:49:37] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 13:50:02] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 13:50:04] "POST /finalize HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 20:43:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 20:46:58] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 20:47:44] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 20:48:30] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 20:49:37] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 20:53:24] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 20:54:18] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 20:55:16] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 20:56:00] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 20:56:53] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 20:57:45] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 20:57:47] "POST /finalize HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 00:17:15] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 00:19:31] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 00:20:14] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 00:21:07] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 00:22:05] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 00:22:54] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 00:23:38] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 00:24:34] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 00:25:36] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 00:26:29] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 00:27:19] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 00:27:21] "POST /finalize HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 00:52:57] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 00:58:35] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 00:58:55] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 00:59:11] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 00:59:30] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 00:59:47] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 01:00:38] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 01:00:58] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 01:01:12] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 01:02:00] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 01:02:25] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 01:02:25] "POST /finalize HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 12:27:58] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 12:31:48] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 12:32:52] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 12:33:08] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 12:33:34] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 12:33:56] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 12:34:38] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 12:35:02] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 12:35:45] "POST /process_item HTTP/1.1" 200 -
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/6048605 브랜드 수집 최종: SPAO
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 2
+[BrandClassifier] 81330개의 브랜드 키워드 로드 완료.
+[번역] 상품명 번역 중... ([UV차단] 라이트 체크 후드 윈드브...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_c0ebbfcf.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_50e884b5.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_ccdb0998.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_8dd2fffd.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_96d115d7.jpg
+[번역] 옵션 번역 중...
+[Classifier] 2983개의 카테고리 로드 완료.
+[Gemini] 프리미엄 상품 설명 생성 중... ([UV차단] 라이트 체크 후드 윈드브...)
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/6048604 브랜드 수집 최종: SPAO
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 2
+[번역] 상품명 번역 중... ([UV차단] 라이트 후드 윈드브레이커...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_732b2e22.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_5215ce1b.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_0725ae1b.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_92a38284.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_7717d88f.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_498cf380.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_f9310c8d.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([UV차단] 라이트 후드 윈드브레이커...)
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/6017109 브랜드 수집 최종: SPAO
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 2
+[번역] 상품명 번역 중... (도트 윈드브레이커_SPJJG23G13...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_f0bcac36.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_dfd7f53c.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_4c18cf23.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_8f715c35.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_ca2dfe60.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_28570ae1.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... (도트 윈드브레이커_SPJJG23G13...)
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/5424018 브랜드 수집 최종: SPAO
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 2
+[번역] 상품명 번역 중... ([씬라이트] 여성 하이넥 재킷_SPJ...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_00144145.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_6e599bd5.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_20c00628.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_417264be.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_e168ce73.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_c2dfd1a1.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_ed860258.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_cab3467b.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([씬라이트] 여성 하이넥 재킷_SPJ...)
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/5640302 브랜드 수집 최종: SPAO
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 2
+[번역] 상품명 번역 중... ([씬라이트] 여성 2-WAY 재킷 (...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_22caa142.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_ce4527eb.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_24836eed.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_aad58cd7.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_5de4037d.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_6b17810f.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_72d1d176.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_de90bac0.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_4cea86b6.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([씬라이트] 여성 2-WAY 재킷 (...)
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/5788833 브랜드 수집 최종: SPAO
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 2
+[번역] 상품명 번역 중... ([소프트얀] 여성 라운드넥 카디건_S...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_b5814f02.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_0d50ba41.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_cf0df4eb.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_b6b91f2e.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_85a047ef.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_a22a2ecd.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_c6ee423d.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_7580768a.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_cdc9d714.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_861a0140.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_ffc674a0.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([소프트얀] 여성 라운드넥 카디건_S...)
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/5816416 브랜드 수집 최종: SPAO
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 2
+[번역] 상품명 번역 중... ([프렌치테리] 여성 2-WAY 후드 ...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_bf09bdd8.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_fab442c8.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_1021a984.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_9f8fc583.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_500cbba0.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_c678162a.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_141d5fed.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_24b5cf66.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_16fad91a.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([프렌치테리] 여성 2-WAY 후드 ...)
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/5334577 브랜드 수집 최종: SPAO
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 2
+[번역] 상품명 번역 중... ([프렌치테리] 2-WAY 후드 집업_...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_adef4c27.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_1bc8f4de.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_90524bcd.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_1d394a8b.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_38922a8a.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_e866259d.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_219de10a.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_dc91fb41.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_d6fa97cf.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_7179c59f.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_6c4933af.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([프렌치테리] 2-WAY 후드 집업_...)
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/6057479 브랜드 수집 최종: SPAO
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 2
+[번역] 상품명 번역 중... ([UV차단] 라이트 패커블 윈드브레이...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_299fa383.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_f0a1fdcc.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_0b9c7d97.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_ebd4ec34.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_e18dde78.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_a808cc81.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_59cbf0b1.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([UV차단] 라이트 패커블 윈드브레이...)
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/5650249 브랜드 수집 최종: SPAO
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 2
+[번역] 상품명 번역 중... ([신세틱레더] 여성 스웨이드 테일러드...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_5eefcc8d.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_c1efb7f0.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_54052610.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_b578e4db.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_75dc5049.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_9148fa00.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([신세틱레더] 여성 스웨이드 테일러드...)
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/6099159 브랜드 수집 최종: SPAO
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 2
+[번역] 상품명 번역 중... ([산리오캐릭터즈] 반팔 파자마(WHI...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_6ffd3569.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_0c722692.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_26c2c44d.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_ed58071d.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_e21c8fd2.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_22bcae31.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_f072d9fe.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([산리오캐릭터즈] 반팔 파자마(WHI...)
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/5980650 브랜드 수집 최종: SPAO
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 2
+[번역] 상품명 번역 중... ([가나디] 반팔 파자마(WHITE)_...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_40064b39.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_cd1c795c.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_e1187911.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_79aef157.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_432f5ff8.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_e078991f.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_38d824ea.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([가나디] 반팔 파자마(WHITE)_...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 39.77074708s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 39
+}
+]
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/5980651 브랜드 수집 최종: SPAO
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 2
+[번역] 상품명 번역 중... ([가나디] 반팔 파자마(PINK)_S...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_600c464d.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_00a9482b.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_eaf5c891.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_c7e9a61d.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_dbf6cc2e.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_ce7e35f3.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_acccee12.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([가나디] 반팔 파자마(PINK)_S...)
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/5980653 브랜드 수집 최종: SPAO
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 2
+[번역] 상품명 번역 중... ([가나디] 반팔 파자마(BLUE)_S...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_dd439d3f.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_50359453.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_590b3ba3.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_1125fc1f.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_2f4c031a.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_be261903.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_1b69ccc4.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([가나디] 반팔 파자마(BLUE)_S...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 24.303085628s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 24
+}
+]
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/5998295 브랜드 수집 최종: SPAO
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 2
+[번역] 상품명 번역 중... ([산리오캐릭터즈] 반팔 파자마(LIG...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_1a0ab78b.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_5f6e77d1.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_cc571b0a.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_4d4df9c1.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_37b9580c.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_4a79db32.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_ab802e61.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([산리오캐릭터즈] 반팔 파자마(LIG...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 2.837576209s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 2
+}
+]
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/5629222 브랜드 수집 최종: SPAO
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 2
+[번역] 상품명 번역 중... ([WARM] 부츠컷 진_SPTJG11...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_a73134a1.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_ea7b9125.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_0ca694ca.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_219b8567.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_769487c7.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_a8992e58.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_57e9117d.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_065dbc2c.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_6c7b74a3.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_e9ff456e.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([WARM] 부츠컷 진_SPTJG11...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 26.67266544s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 26
+}
+]
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/6030259 브랜드 수집 최종: SPAO
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 2
+[번역] 상품명 번역 중... ([짱구] 꿀잠 자는 짱구 반팔 파자마...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_9368127c.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_933bd3cb.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_0b53bbf0.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_146ee0fa.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_b853fc0b.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_071c56e6.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_5d847a03.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([짱구] 꿀잠 자는 짱구 반팔 파자마...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 4.517807832s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 4
+}
+]
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/5998291 브랜드 수집 최종: SPAO
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 2
+[번역] 상품명 번역 중... ([산리오캐릭터즈] 반팔 파자마(GR)...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_0975f343.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_05a43cea.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_52c1718d.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_3b4994a0.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_4d1cf97b.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_0f2e1a8d.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_02153ca1.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([산리오캐릭터즈] 반팔 파자마(GR)...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 41.864919746s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 41
+}
+]
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/5998294 브랜드 수집 최종: SPAO
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 2
+[번역] 상품명 번역 중... ([산리오캐릭터즈] 반팔 파자마(YEL...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_170db59e.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_4dc537dc.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_10f1cc8c.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_e817c1a8.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_8a63bbe1.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_0f6ef1ca.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_5955730a.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([산리오캐릭터즈] 반팔 파자마(YEL...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 19.842857282s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 19
+}
+]
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/6030263 브랜드 수집 최종: SPAO
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 2
+[번역] 상품명 번역 중... ([먼작귀] 먼가 작고 귀여운 여름 반...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_27fb763d.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_7f42f7bf.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_327a253b.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_69620740.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_909bf2de.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_48332a94.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_81d8d9ee.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([먼작귀] 먼가 작고 귀여운 여름 반...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 53.430442289s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 53
+}
+]
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/5698191 브랜드 수집 최종: MUSINSA STANDARD WOMAN
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 1
+[Gemini Match] MUSINSA STANDARD WOMAN -> MUSINSA STANDARD WOMEN
+[번역] 상품명 번역 중... (우먼즈 로 라이즈 버클 플리츠 미니 ...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_bf4af6d5.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_adf92b7e.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_0e69bca7.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_c21958c7.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_9c6148e2.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_c50809d2.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_a5915a42.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_023672d6.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... (우먼즈 로 라이즈 버클 플리츠 미니 ...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 44.903244425s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 44
+}
+]
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/5698193 브랜드 수집 최종: MUSINSA STANDARD WOMAN
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 1
+[번역] 상품명 번역 중... (우먼즈 로 라이즈 버클 플리츠 미니 ...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_0a7302bb.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_e81c9c7c.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_17689028.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_e74920f0.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_c53637d9.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_b560f1ff.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_6ed19890.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_5bb34cfd.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... (우먼즈 로 라이즈 버클 플리츠 미니 ...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 23.065391427s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 23
+}
+]
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/5698192 브랜드 수집 최종: MUSINSA STANDARD WOMAN
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 1
+[번역] 상품명 번역 중... ([한소희 PICK]우먼즈 로 라이즈 ...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_c7ef6128.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_9619a2ab.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_a69e69ea.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_f7e66fcd.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_90e4a68d.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_3e703421.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_318eef5a.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_5fad6b79.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_e7a38abf.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_fd4a4462.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([한소희 PICK]우먼즈 로 라이즈 ...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 59.758376552s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 59
+}
+]
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/5698185 브랜드 수집 최종: MUSINSA STANDARD WOMAN
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 1
+[번역] 상품명 번역 중... ([한소희 PICK][언바운드 걸] 우...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_b2c73c8b.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_024d9289.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_628700e2.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_0e758ee4.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_2aa6bffc.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_573a85eb.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_fbd87638.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_1e1e4e7e.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_7f7ffb1d.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_b588655a.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([한소희 PICK][언바운드 걸] 우...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 37.364622467s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 37
+}
+]
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/5698186 브랜드 수집 최종: MUSINSA STANDARD WOMAN
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 1
+[번역] 상품명 번역 중... ([언바운드 걸] 우먼즈 플리츠 미니 ...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_a6a30f09.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_42ae0eed.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_85af21f9.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_9eaa6dca.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_a9e525fc.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_2d1dc9b0.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_3db457f0.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_f9e7f7e4.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([언바운드 걸] 우먼즈 플리츠 미니 ...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 13.985342908s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 13
+}
+]
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/4644447 브랜드 수집 최종: MUSINSA STANDARD WOMAN
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 1
+[번역] 상품명 번역 중... ([한소희 PICK]우먼즈 로 웨이스트...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_8335bda1.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_1bb0b6c3.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_ee14a579.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_1e8445e9.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_d738fe52.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_b991256c.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_8b6dbd43.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_fd7cebbc.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_2bc7abb8.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_f487b597.jpg
+[이미지 처리] 1080x1295 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_b17f1806.jpg
+[이미지 처리] 1080x1295 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_9a557f08.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([한소희 PICK]우먼즈 로 웨이스트...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 42.859517525s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 42
+}
+]
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/4644451 브랜드 수집 최종: MUSINSA STANDARD WOMAN
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 1
+[번역] 상품명 번역 중... (우먼즈 로 웨이스트 딥 턱 엑스트라 ...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_8f04f73b.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_b59404ba.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_2896a5fc.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_b5d9b3c9.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_ef930c50.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_122a44b8.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... (우먼즈 로 웨이스트 딥 턱 엑스트라 ...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 16.453654738s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 16
+}
+]
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/4644450 브랜드 수집 최종: MUSINSA STANDARD WOMAN
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 1
+[번역] 상품명 번역 중... (우먼즈 로 웨이스트 딥 턱 엑스트라 ...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_c4e211b9.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_ee537fec.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_f907781d.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_e26a9959.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_3291bca2.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_cb35037b.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_aae033c6.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_840777a1.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... (우먼즈 로 웨이스트 딥 턱 엑스트라 ...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 50.227658485s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 50
+}
+]
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/4644449 브랜드 수집 최종: MUSINSA STANDARD WOMAN
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 1
+[번역] 상품명 번역 중... (우먼즈 로 웨이스트 딥 턱 엑스트라 ...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_cea6fe4e.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_182ce35b.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_d2dfef34.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_1999272f.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_5aba90a3.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_efc660d7.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_ab7e1d49.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_0478820a.jpg
+[이미지 처리] 1080x1295 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_9e2c748f.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... (우먼즈 로 웨이스트 딥 턱 엑스트라 ...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 23.225129591s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 23
+}
+]
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/4644448 브랜드 수집 최종: MUSINSA STANDARD WOMAN
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 1
+[번역] 상품명 번역 중... (우먼즈 로 웨이스트 딥 턱 엑스트라 ...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_14265fc6.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_6cd4798a.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_1f8700e3.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_f8b3a909.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_efacbe87.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_d359908a.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... (우먼즈 로 웨이스트 딥 턱 엑스트라 ...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 57.725057658s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 57
+}
+]
+[DEBUG] Olive Young: 옵션 버튼 찾는 중...
+[DEBUG] Olive Young: '선택해 주세요' 버튼을 찾지 못함
+[DEBUG] Extracted JS Keys: []
+[번역] 상품명 번역 중... ([쿨톤보정/세미매트] 달바 퍼플 톤업...)
+[이미지 처리] 1000x1000 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_0635de04.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([쿨톤보정/세미매트] 달바 퍼플 톤업...)
+[DEBUG] Olive Young: 옵션 버튼 찾는 중...
+[DEBUG] Olive Young: '선택해 주세요' 버튼을 찾지 못함
+[DEBUG] Extracted JS Keys: []
+[번역] 상품명 번역 중... ([4월 올영픽 한정기획] 쏘내추럴 올...)
+[이미지 처리] 1000x1000 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_4ddac4f2.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([4월 올영픽 한정기획] 쏘내추럴 올...)
+[DEBUG] Olive Young: 옵션 버튼 찾는 중...
+[DEBUG] Olive Young: '선택해 주세요' 버튼을 찾지 못함
+[DEBUG] Extracted JS Keys: []
+[번역] 상품명 번역 중... ([1+1] PDRN 모공 탄력 세럼 ...)
+[이미지 처리] 1000x1000 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_0c42751b.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([1+1] PDRN 모공 탄력 세럼 ...)
+[DEBUG] Olive Young: 옵션 버튼 찾는 중...
+[DEBUG] Olive Young: '선택해 주세요' 버튼을 찾지 못함
+[DEBUG] Extracted JS Keys: []
+[번역] 상품명 번역 중... ([4월 올영픽] 바이오더마 하이드라비...)
+[이미지 처리] 1000x1000 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_f00e67d0.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([4월 올영픽] 바이오더마 하이드라비...)
+[DEBUG] Olive Young: 옵션 버튼 찾는 중...
+[DEBUG] Olive Young: 옵션 버튼 클릭 성공. 대기 중...
+[DEBUG] Olive Young 옵션 직접 추출 성공: 3개
+[DEBUG] Extracted JS Keys: []
+[번역] 상품명 번역 중... ([4월올영픽] 세라마이드 아토 로션 ...)
+[이미지 처리] 1000x1000 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_23cd32af.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([4월올영픽] 세라마이드 아토 로션 ...)
+[DEBUG] Olive Young: 옵션 버튼 찾는 중...
+[DEBUG] Olive Young: 옵션 버튼 클릭 성공. 대기 중...
+[DEBUG] Olive Young 옵션 직접 추출 성공: 17개
+[DEBUG] Extracted JS Keys: []
+[번역] 상품명 번역 중... ([인보라 공동개발/단독기획] 얼터너티...)
+[이미지 처리] 1000x1000 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_a37f1198.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([인보라 공동개발/단독기획] 얼터너티...)
+[DEBUG] Olive Young: 옵션 버튼 찾는 중...
+[DEBUG] Olive Young: 옵션 버튼 클릭 성공. 대기 중...
+[DEBUG] Olive Young 옵션 직접 추출 성공: 3개
+[DEBUG] Extracted JS Keys: []
+[번역] 상품명 번역 중... ([조슈아PICK] 리얼베리어 마스크 ...)
+[이미지 처리] 1000x1000 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_8e073129.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([조슈아PICK] 리얼베리어 마스크 ...)
+[DEBUG] Olive Young: 옵션 버튼 찾는 중...
+[DEBUG] Olive Young: 옵션 버튼 클릭 성공. 대기 중...
+[DEBUG] Olive Young 옵션 직접 추출 성공: 3개
+[DEBUG] Extracted JS Keys: []
+[번역] 상품명 번역 중... ([조슈아PICK] 리얼베리어 마스크 ...)
+[이미지 처리] 1000x1000 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_c9766bcb.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([조슈아PICK] 리얼베리어 마스크 ...)
+[DEBUG] Olive Young: 옵션 버튼 찾는 중...
+[DEBUG] Olive Young: 옵션 버튼 클릭 성공. 대기 중...
+[DEBUG] Olive Young 옵션 직접 추출 성공: 4개
+[DEBUG] Extracted JS Keys: []
+[번역] 상품명 번역 중... ([4년 연속 1위] 어노브 딥 데미지...)
+[이미지 처리] 1000x1000 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_b764fba6.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([4년 연속 1위] 어노브 딥 데미지...)
+[DEBUG] Olive Young: 옵션 버튼 찾는 중...
+[DEBUG] Olive Young: 옵션 버튼 클릭 성공. 대기 중...
+[DEBUG] Olive Young 옵션 직접 추출 성공: 2개
+[DEBUG] Extracted JS Keys: []
+[번역] 상품명 번역 중... ([화잘먹] 맑은 어성초 진정 수분 선...)
+[이미지 처리] 1000x1000 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_c6ff74db.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([화잘먹] 맑은 어성초 진정 수분 선...)
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/2837405 브랜드 수집 최종: MATIN KIM
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 1
+[번역] 상품명 번역 중... (LOGO COATING...)
+[이미지 처리] 500x667 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_6495fa4a.jpg
+[이미지 처리] 500x667 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_8da9e043.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... (LOGO COATING...)
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/6098527 브랜드 수집 최종: MATIN KIM
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 1
+[번역] 상품명 번역 중... (DUST DENIM POCKET SH...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_f8f1790d.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_8aae0af5.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... (DUST DENIM POCKET SH...)
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/3641799 브랜드 수집 최종: MATIN KIM
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 1
+[번역] 상품명 번역 중... (VINTAGE CARD WALLET ...)
+[이미지 처리] 500x667 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_81234490.jpg
+[이미지 처리] 500x667 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_910666d5.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... (VINTAGE CARD WALLET ...)
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/1969507 브랜드 수집 최종: MATIN KIM
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 2
+[번역] 상품명 번역 중... (ACCORDION WALLET IN ...)
+[이미지 처리] 500x667 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_d0808d55.jpg
+[이미지 처리] 500x667 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_8e029cb1.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... (ACCORDION WALLET IN ...)
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/4568535 브랜드 수집 최종: MATIN KIM
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 1
+[번역] 상품명 번역 중... (BUCKLE STRAP TWO WAY...)
+[이미지 처리] 500x667 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_0cb4c190.jpg
+[이미지 처리] 500x667 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_ec835063.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... (BUCKLE STRAP TWO WAY...)
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/6201919 브랜드 수집 최종: MATIN KIM
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 1
+[번역] 상품명 번역 중... (OVERSIZED MESH KNIT ...)
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_28c3755b.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_9774d995.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_7c8b4818.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_d33be102.jpg
+[이미지 처리] 500x600 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_bcfb879e.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... (OVERSIZED MESH KNIT ...)
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/5610836 브랜드 수집 최종: MATIN KIM
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 1
+[번역] 상품명 번역 중... (GLOSSY LOGO STITCH B...)
+[이미지 처리] 500x667 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_54300e43.jpg
+[이미지 처리] 500x667 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_ef5d2d47.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... (GLOSSY LOGO STITCH B...)
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/3573116 브랜드 수집 최종: MATIN KIM
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 1
+[번역] 상품명 번역 중... (CROP HOODY COATING...)
+[이미지 처리] 500x667 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_bfbb0195.jpg
+[이미지 처리] 500x667 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_0e654f48.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... (CROP HOODY COATING...)
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/5291175 브랜드 수집 최종: MATIN KIM
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 1
+[번역] 상품명 번역 중... (MINI ECOBAG IN BLACK...)
+[이미지 처리] 500x667 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_4506b1bc.jpg
+[이미지 처리] 500x667 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_40450435.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... (MINI ECOBAG IN BLACK...)
+[fallback] requests 실패 → Playwright 시도...
+[DEBUG] https://www.musinsa.com/products/5521857 브랜드 수집 최종: MATIN KIM
+[DEBUG] Extracted JS Keys: ['__NEXT_DATA__']
+[DEBUG] Musinsa Options Found: 1
+[번역] 상품명 번역 중... (PALETTE ECOBAG IN ST...)
+[이미지 처리] 500x667 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_dd150e16.jpg
+[이미지 처리] 500x667 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_24dde02f.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... (PALETTE ECOBAG IN ST...)
+[DEBUG] Olive Young: 옵션 버튼 찾는 중...
+[DEBUG] Olive Young: 옵션 버튼 클릭 성공. 대기 중...
+[DEBUG] Olive Young 옵션 직접 추출 성공: 2개
+[DEBUG] Extracted JS Keys: []
+[번역] 상품명 번역 중... ([산뜻수분]라운드어라운드 센티드 핸드...)
+[이미지 처리] 1000x1000 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_a1f90d42.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([산뜻수분]라운드어라운드 센티드 핸드...)
+[DEBUG] Olive Young: 옵션 버튼 찾는 중...
+[DEBUG] Olive Young: 옵션 버튼 클릭 성공. 대기 중...
+[DEBUG] Olive Young 옵션 직접 추출 성공: 5개
+[DEBUG] Extracted JS Keys: []
+[번역] 상품명 번역 중... (아이깨끗해 거품형 핸드워시 250ml...)
+[이미지 처리] 1000x1000 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_c153e323.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... (아이깨끗해 거품형 핸드워시 250ml...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 5.012898401s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 5
+}
+]
+[DEBUG] Olive Young: 옵션 버튼 찾는 중...
+[DEBUG] Olive Young: '선택해 주세요' 버튼을 찾지 못함
+[DEBUG] Extracted JS Keys: []
+[번역] 상품명 번역 중... (세라마이드 아토 집중 크림 75ML...)
+[이미지 처리] 1000x1000 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_ae751060.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... (세라마이드 아토 집중 크림 75ML...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 48.878748334s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 48
+}
+]
+[DEBUG] Olive Young: 옵션 버튼 찾는 중...
+[DEBUG] Olive Young: 옵션 버튼 클릭 성공. 대기 중...
+[DEBUG] Olive Young 옵션 직접 추출 성공: 2개
+[DEBUG] Extracted JS Keys: []
+[번역] 상품명 번역 중... ([바오패밀리]해피바스 오리지널컬렉션 ...)
+[이미지 처리] 1000x1000 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_abe64dcb.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([바오패밀리]해피바스 오리지널컬렉션 ...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 29.67697305s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 29
+}
+]
+[DEBUG] Olive Young: 옵션 버튼 찾는 중...
+[DEBUG] Olive Young: 옵션 버튼 클릭 성공. 대기 중...
+[DEBUG] Olive Young 옵션 직접 추출 성공: 2개
+[DEBUG] Extracted JS Keys: []
+[번역] 상품명 번역 중... ([1+1]식물나라 순한 항균 버블 핸...)
+[이미지 처리] 1000x1000 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_956c409d.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([1+1]식물나라 순한 항균 버블 핸...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 12.95081243s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 12
+}
+]
+[DEBUG] Olive Young: 옵션 버튼 찾는 중...
+[DEBUG] Olive Young: '선택해 주세요' 버튼을 찾지 못함
+[DEBUG] Extracted JS Keys: []
+[번역] 상품명 번역 중... ([꿈치케어/미백] 낫포유 브라이트닝 ...)
+[이미지 처리] 1000x1000 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_9bbcad12.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([꿈치케어/미백] 낫포유 브라이트닝 ...)
+[DEBUG] Olive Young: 옵션 버튼 찾는 중...
+[DEBUG] Olive Young: 옵션 버튼 클릭 성공. 대기 중...
+[DEBUG] Olive Young 옵션 직접 추출 성공: 4개
+[DEBUG] Extracted JS Keys: []
+[번역] 상품명 번역 중... (라운드어라운드 센티드 배쓰밤 80g ...)
+[이미지 처리] 1000x1000 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_77332e42.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... (라운드어라운드 센티드 배쓰밤 80g ...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 2.056689438s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 2
+}
+]
+[DEBUG] Olive Young: 옵션 버튼 찾는 중...
+[DEBUG] Olive Young: '선택해 주세요' 버튼을 찾지 못함
+[DEBUG] Extracted JS Keys: []
+[번역] 상품명 번역 중... (아비노 베이비 수딩 릴리프 모이스춰 ...)
+[이미지 처리] 2475x2475 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_cf63b343.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... (아비노 베이비 수딩 릴리프 모이스춰 ...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 48.01135573s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 48
+}
+]
+[DEBUG] Olive Young: 옵션 버튼 찾는 중...
+[DEBUG] Olive Young: '선택해 주세요' 버튼을 찾지 못함
+[DEBUG] Extracted JS Keys: []
+[번역] 상품명 번역 중... ([NEW/올영단독] 밸런스풀 시카 오...)
+[이미지 처리] 1000x1000 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_23f73cde.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([NEW/올영단독] 밸런스풀 시카 오...)
+[DEBUG] Olive Young: 옵션 버튼 찾는 중...
+[DEBUG] Olive Young: 옵션 버튼 클릭 성공. 대기 중...
+[DEBUG] Olive Young 옵션 직접 추출 성공: 7개
+[DEBUG] Extracted JS Keys: []
+[번역] 상품명 번역 중... ([다굽자]웨이크메이크 쉬어 브리즈 블...)
+[이미지 처리] 1000x1000 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_a7b41c8d.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([다굽자]웨이크메이크 쉬어 브리즈 블...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 34.83518138s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 34
+}
+]
+[DEBUG] Olive Young: 옵션 버튼 찾는 중...
+[DEBUG] Olive Young: 옵션 버튼 클릭 성공. 대기 중...
+[DEBUG] Olive Young 옵션 직접 추출 성공: 10개
+[DEBUG] Extracted JS Keys: []
+[번역] 상품명 번역 중... ([1등 속눈썹/또렷눈매] 코링코 톡톡...)
+[이미지 처리] 1000x1000 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_b3e33d8d.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([1등 속눈썹/또렷눈매] 코링코 톡톡...)
+[DEBUG] Olive Young: 옵션 버튼 찾는 중...
+[DEBUG] Olive Young: 옵션 버튼 클릭 성공. 대기 중...
+[DEBUG] Olive Young 옵션 직접 추출 성공: 27개
+[DEBUG] Extracted JS Keys: []
+[번역] 상품명 번역 중... ([속눈썹 실패 걱정 끝]필리밀리 속눈...)
+[이미지 처리] 1000x1000 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_c9a6912a.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([속눈썹 실패 걱정 끝]필리밀리 속눈...)
+[DEBUG] Olive Young: 옵션 버튼 찾는 중...
+[DEBUG] Olive Young: '선택해 주세요' 버튼을 찾지 못함
+[DEBUG] Extracted JS Keys: []
+[번역] 상품명 번역 중... ([4월 올영픽/역대급할인] 시세이도 ...)
+[이미지 처리] 1000x1000 상품 이미지 정규화 중 (상하좌우 여백 확보)...
+  -> 변환 완료: /Users/summer/Desktop/사업/바이브코딩/큐텐 자동업로드/outputs/images/main_192510b8.jpg
+[번역] 옵션 번역 중...
+[Gemini] 프리미엄 상품 설명 생성 중... ([4월 올영픽/역대급할인] 시세이도 ...)
+[Gemini Error] 상품 설명 생성 실패: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 51.928903137s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 51
+}
+]127.0.0.1 - - [03/Apr/2026 12:36:06] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 12:36:27] "POST /process_item HTTP/1.1" 200 -
+127.0.0.1 - - [03/Apr/2026 12:36:29] "POST /finalize HTTP/1.1" 200 -

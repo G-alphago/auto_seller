@@ -59,10 +59,19 @@ def save_to_excel(rows: list, output_dir: str = "outputs", filename: str = None)
         ws.append(COLUMNS)
         start_row = 2
 
+    # 파일명에서 베이스 이름 추출 (확장자 제거 및 마지막 9자리 추출)
+    base_name = os.path.splitext(filename)[0]
+    file_suffix = base_name[-9:] if len(base_name) >= 9 else base_name
+
     # 데이터 입력
     for idx, row in enumerate(rows):
         current_row = start_row + idx
         
+        # 큐텐 판매자 상품 코드 자동 생성 (B열)
+        # 형식: [파일명 뒤 9자리]_[2자리 넘버링] (예: 03_123629_01)
+        seller_code = f"{file_suffix}_{idx + 1:02d}"
+        row["seller_unique_item_id"] = seller_code
+
         # 상품설명 정제
         desc = clean_html(row.get("item_description", ""))
         row["item_description"] = desc[:MAX_DESC]
@@ -90,16 +99,17 @@ def save_summary_excel(rows: list, output_dir: str = "outputs", filename: str = 
     wb = openpyxl.Workbook()
     ws = wb.active
     
-    # 헤더
-    headers = ["상품명", "URL", "가격", "옵션"]
+    # 헤더 (판매자상품코드 추가)
+    headers = ["판매자상품코드", "상품명", "URL", "가격", "옵션"]
     ws.append(headers)
     
     # 데이터 (원본 데이터 기준 또는 변환 데이터 기준)
-    # 여기서는 요약용이므로 가독성 좋은 데이터를 넣음
+    # save_to_excel에서 추가된 seller_unique_item_id를 활용
     for r in rows:
         ws.append([
+            r.get("seller_unique_item_id", ""),
             r.get("item_name", ""),
-            r.get("source_url", ""), # 원본 URL을 rows에 미리 넣어둬야 함
+            r.get("source_url", ""), # 원본 URL
             r.get("price_yen", ""),
             r.get("option_info", "")
         ])
